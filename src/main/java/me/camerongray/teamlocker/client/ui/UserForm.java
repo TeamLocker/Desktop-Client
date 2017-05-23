@@ -3,6 +3,7 @@ package me.camerongray.teamlocker.client.ui;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -22,5 +23,13 @@ public abstract class UserForm implements Initializable {
     @FXML
     void btnClose_Click(ActionEvent event) {
         UIHelpers.closeStage(event);
+    }
+
+    void showPasswordMismatchAlert() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Password mismatch");
+        alert.setHeaderText("Passwords do not match");
+        alert.setContentText("The passwords you have entered do not match.  Check the passwords then try again");
+        alert.showAndWait();
     }
 }

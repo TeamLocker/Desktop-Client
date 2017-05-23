@@ -10,5 +10,15 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Gradle: com.google.protobuf:protobuf-java:3.3.1" level="project" />
+    <orderEntry type="library" name="Gradle: org.abstractj.kalium:kalium:0.6.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.github.jnr:jnr-ffi:2.0.5" level="project" />
+    <orderEntry type="library" name="Gradle: com.github.jnr:jffi:1.2.9" level="project" />
+    <orderEntry type="library" name="Gradle: com.github.jnr:jffi:native:1.2.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.ow2.asm:asm:5.0.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.ow2.asm:asm-commons:5.0.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.ow2.asm:asm-analysis:5.0.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.ow2.asm:asm-tree:5.0.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.ow2.asm:asm-util:5.0.3" level="project" />
+    <orderEntry type="library" name="Gradle: com.github.jnr:jnr-x86asm:1.0.2" level="project" />
   </component>
 </module>
