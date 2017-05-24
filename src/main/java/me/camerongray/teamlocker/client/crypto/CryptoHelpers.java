@@ -2,7 +2,6 @@ package me.camerongray.teamlocker.client.crypto;
 
 import org.abstractj.kalium.crypto.Password;
 import org.abstractj.kalium.crypto.Random;
-import org.abstractj.kalium.crypto.SealedBox;
 import org.abstractj.kalium.crypto.SecretBox;
 import org.abstractj.kalium.encoders.Encoder;
 import org.abstractj.kalium.keys.*;
@@ -11,7 +10,7 @@ import static org.abstractj.kalium.NaCl.Sodium.*;
 /**
  * Created by camerong on 23/05/17.
  */
-public class Crypto {
+class CryptoHelpers {
     public static final int ENCRYPTION_TYPE_SECRET = 0;
     public static final int ENCRYPTION_TYPE_BOX = 1;
 
@@ -49,9 +48,9 @@ public class Crypto {
     public static byte[] generateNonce(int encryptionType) {
         int length = -1; // TODO - Should we have a default length or raise an exception.etc?
 
-        if (encryptionType == Crypto.ENCRYPTION_TYPE_SECRET) {
+        if (encryptionType == CryptoHelpers.ENCRYPTION_TYPE_SECRET) {
             length = CRYPTO_SECRETBOX_XSALSA20POLY1305_NONCEBYTES;
-        } else if (encryptionType == Crypto.ENCRYPTION_TYPE_BOX) {
+        } else if (encryptionType == CryptoHelpers.ENCRYPTION_TYPE_BOX) {
             length = CRYPTO_BOX_CURVE25519XSALSA20POLY1305_NONCEBYTES;
         }
 

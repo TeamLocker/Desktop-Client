@@ -1,9 +1,8 @@
 package me.camerongray.teamlocker.client.core;
 
-import org.abstractj.kalium.keys.KeyPair;
-import me.camerongray.teamlocker.client.crypto.Crypto;
-
-import java.util.Base64;
+import com.google.protobuf.ByteString;
+import me.camerongray.teamlocker.client.crypto.UserCrypto;
+import me.camerongray.teamlocker.client.protobufs.Objects;
 
 /**
  * Created by camerong on 23/05/17.
@@ -21,31 +20,39 @@ public class User {
     private byte[] salt;
 
     public static User createNew(String username, String fullName, String password) {
-        KeyPair keyPair = Crypto.generateKeyPair();
-
-        byte[] salt = Crypto.generateSalt();
-        byte[] passwordKey = Crypto.deriveKeyFromPassword(password, salt);
-
-        byte[] encryptedPrivateKeyNonce = Crypto.generateNonce(Crypto.ENCRYPTION_TYPE_SECRET);
-        byte[] encryptedPrivateKey = Crypto.encryptWithSecret(keyPair.getPrivateKey().toBytes(), passwordKey,
-                encryptedPrivateKeyNonce);
-
-        String authKey = Crypto.hashPassword(password);
-
-        System.out.println(new String(Base64.getEncoder().encode(encryptedPrivateKey)));
-        System.out.println(new String(Base64.getEncoder().encode(keyPair.getPrivateKey().toBytes())));
+        UserCrypto cryptoAttributes = UserCrypto.generateNewCryptoAttribtues(password);
 
         User user = new User();
         user.username = username;
         user.fullName = fullName;
-        user.authKey = authKey;
-        user.encryptedPrivateKey = encryptedPrivateKey;
-        user.encryptedPrivateKeyNonce = encryptedPrivateKeyNonce;
-        user.encryptedPrivateKeyOpsLimit = Crypto.getOpsLimit();
-        user.encryptedPrivateKeyMemLimit = Crypto.getMemLimit();
-        user.publicKey = keyPair.getPublicKey().toBytes();
-        user.salt = salt;
+        user.authKey = cryptoAttributes.getAuthKey();
+        user.encryptedPrivateKey = cryptoAttributes.getEncryptedPrivateKey();
+        user.encryptedPrivateKeyNonce = cryptoAttributes.getEncryptedPrivateKeyNonce();
+        user.encryptedPrivateKeyOpsLimit = cryptoAttributes.getEncryptedPrivateKeyOpsLimit();
+        user.encryptedPrivateKeyMemLimit = cryptoAttributes.getEncryptedPrivateKeyMemLimit();
+        user.publicKey = cryptoAttributes.getPublicKey();
+        user.salt = cryptoAttributes.getSalt();
 
         return user;
+    }
+
+    private Objects.User getProtobuf() {
+        Objects.User.Builder builder = Objects.User.newBuilder();
+        builder.setUsername(username);
+        builder.setFullName(fullName);
+        builder.setAuthKey(authKey);
+        builder.setEncryptedPrivateKey(ByteString.copyFrom(encryptedPrivateKey));
+        builder.setEncryptedPrivateKeyNonce(ByteString.copyFrom(encryptedPrivateKeyNonce));
+        builder.setEncryptedPrivateKeyOpsLimit(encryptedPrivateKeyOpsLimit);
+        builder.setEncryptedPrivateKeyMemLimit(encryptedPrivateKeyMemLimit);
+        builder.setPublicKey(ByteString.copyFrom(publicKey));
+        builder.setSalt(ByteString.copyFrom(salt));
+
+        return builder.build();
+    }
+
+    public void addToServer() {
+        Objects.User protobuf = getProtobuf();
+        System.out.println(protobuf.toString());
     }
 }
