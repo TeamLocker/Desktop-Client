@@ -82,6 +82,11 @@ public final class Objects {
      * <code>bytes salt = 10;</code>
      */
     com.google.protobuf.ByteString getSalt();
+
+    /**
+     * <code>bool is_admin = 11;</code>
+     */
+    boolean getIsAdmin();
   }
   /**
    * Protobuf type {@code User}
@@ -105,6 +110,7 @@ public final class Objects {
       encryptedPrivateKeyMemLimit_ = 0L;
       publicKey_ = com.google.protobuf.ByteString.EMPTY;
       salt_ = com.google.protobuf.ByteString.EMPTY;
+      isAdmin_ = false;
     }
 
     @java.lang.Override
@@ -183,6 +189,11 @@ public final class Objects {
             case 82: {
 
               salt_ = input.readBytes();
+              break;
+            }
+            case 88: {
+
+              isAdmin_ = input.readBool();
               break;
             }
           }
@@ -373,6 +384,15 @@ public final class Objects {
       return salt_;
     }
 
+    public static final int IS_ADMIN_FIELD_NUMBER = 11;
+    private boolean isAdmin_;
+    /**
+     * <code>bool is_admin = 11;</code>
+     */
+    public boolean getIsAdmin() {
+      return isAdmin_;
+    }
+
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -414,6 +434,9 @@ public final class Objects {
       }
       if (!salt_.isEmpty()) {
         output.writeBytes(10, salt_);
+      }
+      if (isAdmin_ != false) {
+        output.writeBool(11, isAdmin_);
       }
     }
 
@@ -459,6 +482,10 @@ public final class Objects {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(10, salt_);
       }
+      if (isAdmin_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(11, isAdmin_);
+      }
       memoizedSize = size;
       return size;
     }
@@ -495,6 +522,8 @@ public final class Objects {
           .equals(other.getPublicKey());
       result = result && getSalt()
           .equals(other.getSalt());
+      result = result && (getIsAdmin()
+          == other.getIsAdmin());
       return result;
     }
 
@@ -526,6 +555,9 @@ public final class Objects {
       hash = (53 * hash) + getPublicKey().hashCode();
       hash = (37 * hash) + SALT_FIELD_NUMBER;
       hash = (53 * hash) + getSalt().hashCode();
+      hash = (37 * hash) + IS_ADMIN_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getIsAdmin());
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -675,6 +707,8 @@ public final class Objects {
 
         salt_ = com.google.protobuf.ByteString.EMPTY;
 
+        isAdmin_ = false;
+
         return this;
       }
 
@@ -707,6 +741,7 @@ public final class Objects {
         result.encryptedPrivateKeyMemLimit_ = encryptedPrivateKeyMemLimit_;
         result.publicKey_ = publicKey_;
         result.salt_ = salt_;
+        result.isAdmin_ = isAdmin_;
         onBuilt();
         return result;
       }
@@ -780,6 +815,9 @@ public final class Objects {
         }
         if (other.getSalt() != com.google.protobuf.ByteString.EMPTY) {
           setSalt(other.getSalt());
+        }
+        if (other.getIsAdmin() != false) {
+          setIsAdmin(other.getIsAdmin());
         }
         onChanged();
         return this;
@@ -1207,6 +1245,32 @@ public final class Objects {
         onChanged();
         return this;
       }
+
+      private boolean isAdmin_ ;
+      /**
+       * <code>bool is_admin = 11;</code>
+       */
+      public boolean getIsAdmin() {
+        return isAdmin_;
+      }
+      /**
+       * <code>bool is_admin = 11;</code>
+       */
+      public Builder setIsAdmin(boolean value) {
+        
+        isAdmin_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bool is_admin = 11;</code>
+       */
+      public Builder clearIsAdmin() {
+        
+        isAdmin_ = false;
+        onChanged();
+        return this;
+      }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return this;
@@ -1270,15 +1334,15 @@ public final class Objects {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\rObjects.proto\"\201\002\n\004User\022\n\n\002id\030\001 \001(\005\022\020\n\010" +
+      "\n\rObjects.proto\"\223\002\n\004User\022\n\n\002id\030\001 \001(\005\022\020\n\010" +
       "username\030\002 \001(\t\022\021\n\tfull_name\030\003 \001(\t\022\020\n\010aut" +
       "h_key\030\004 \001(\t\022\035\n\025encrypted_private_key\030\005 \001" +
       "(\014\022#\n\033encrypted_private_key_nonce\030\006 \001(\014\022" +
       "\'\n\037encrypted_private_key_ops_limit\030\007 \001(\005" +
       "\022\'\n\037encrypted_private_key_mem_limit\030\010 \001(" +
-      "\003\022\022\n\npublic_key\030\t \001(\014\022\014\n\004salt\030\n \001(\014B,\n*m" +
-      "e.camerongray.teamlocker.client.protobuf" +
-      "sb\006proto3"
+      "\003\022\022\n\npublic_key\030\t \001(\014\022\014\n\004salt\030\n \001(\014\022\020\n\010i" +
+      "s_admin\030\013 \001(\010B,\n*me.camerongray.teamlock" +
+      "er.client.protobufsb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -1297,7 +1361,7 @@ public final class Objects {
     internal_static_User_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_User_descriptor,
-        new java.lang.String[] { "Id", "Username", "FullName", "AuthKey", "EncryptedPrivateKey", "EncryptedPrivateKeyNonce", "EncryptedPrivateKeyOpsLimit", "EncryptedPrivateKeyMemLimit", "PublicKey", "Salt", });
+        new java.lang.String[] { "Id", "Username", "FullName", "AuthKey", "EncryptedPrivateKey", "EncryptedPrivateKeyNonce", "EncryptedPrivateKeyOpsLimit", "EncryptedPrivateKeyMemLimit", "PublicKey", "Salt", "IsAdmin", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

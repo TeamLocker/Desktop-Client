@@ -3,10 +3,7 @@ package me.camerongray.teamlocker.client.ui;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import me.camerongray.teamlocker.client.utils.UIHelpers;
 
 /**
@@ -19,6 +16,7 @@ public abstract class UserForm implements Initializable {
     @FXML PasswordField txtPasswordConfirm;
     @FXML Button btnClose;
     @FXML Button btnPrimary;
+    @FXML CheckBox chkIsAdmin;
 
     @FXML
     void btnClose_Click(ActionEvent event) {

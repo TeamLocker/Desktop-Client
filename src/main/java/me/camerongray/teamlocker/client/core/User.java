@@ -18,8 +18,9 @@ public class User {
     private long encryptedPrivateKeyMemLimit;
     private byte[] publicKey;
     private byte[] salt;
+    private boolean isAdmin;
 
-    public static User createNew(String username, String fullName, String password) {
+    public static User createNew(String username, String fullName, String password, boolean isAdmin) {
         UserCrypto cryptoAttributes = UserCrypto.generateNewCryptoAttribtues(password);
 
         User user = new User();
@@ -32,6 +33,7 @@ public class User {
         user.encryptedPrivateKeyMemLimit = cryptoAttributes.getEncryptedPrivateKeyMemLimit();
         user.publicKey = cryptoAttributes.getPublicKey();
         user.salt = cryptoAttributes.getSalt();
+        user.isAdmin = isAdmin;
 
         return user;
     }
@@ -47,6 +49,7 @@ public class User {
         builder.setEncryptedPrivateKeyMemLimit(encryptedPrivateKeyMemLimit);
         builder.setPublicKey(ByteString.copyFrom(publicKey));
         builder.setSalt(ByteString.copyFrom(salt));
+        builder.setIsAdmin(isAdmin);
 
         return builder.build();
     }

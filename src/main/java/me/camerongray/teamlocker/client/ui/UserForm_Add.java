@@ -22,7 +22,8 @@ public class UserForm_Add extends UserForm {
             showPasswordMismatchAlert();
             return;
         }
-        User user = User.createNew(txtUsername.getText(), txtFullName.getText(), txtPassword.getText());
+        User user = User.createNew(txtUsername.getText(), txtFullName.getText(), txtPassword.getText(),
+                chkIsAdmin.isSelected());
         user.addToServer();
     }
 }
