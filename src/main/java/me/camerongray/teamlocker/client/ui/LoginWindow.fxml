@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane prefHeight="158.0" prefWidth="556.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.camerongray.teamlocker.client.ui.LoginWindow">
+   <children>
+      <GridPane hgap="10.0" layoutX="138.0" layoutY="144.0" prefWidth="574.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="80.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="500.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
+        </rowConstraints>
+         <children>
+            <Label text="Server:" GridPane.halignment="RIGHT" />
+            <Label text="Username:" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+            <Label text="Password:" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+            <GridPane hgap="10.0" GridPane.columnIndex="1">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="355.0" />
+                  <ColumnConstraints hgrow="NEVER" maxWidth="35.0" minWidth="35.0" prefWidth="35.0" />
+                  <ColumnConstraints hgrow="NEVER" maxWidth="79.0" minWidth="79.0" prefWidth="79.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <TextField fx:id="txtServer" prefHeight="20.0" prefWidth="287.0" text="127.0.0.1" />
+                  <Label text="Port:" GridPane.columnIndex="1" GridPane.halignment="RIGHT" />
+                  <TextField fx:id="txtPort" prefHeight="26.0" prefWidth="85.0" text="4048" GridPane.columnIndex="2" />
+               </children>
+            </GridPane>
+            <TextField fx:id="txtUsername" text="test" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <PasswordField fx:id="txtPassword" text="test" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+         </children>
+      </GridPane>
+      <GridPane AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button fx:id="btnExit" cancelButton="true" mnemonicParsing="false" onAction="#btnExit_Click" text="Exit" />
+            <Button fx:id="btnLogin" defaultButton="true" mnemonicParsing="false" onAction="#btnLogin_Click" text="Login" GridPane.columnIndex="1" GridPane.halignment="RIGHT" />
+         </children>
+      </GridPane>
+      <Button layoutX="-17.0" layoutY="-196.0" mnemonicParsing="false" text="Button" />
+   </children>
+</AnchorPane>
