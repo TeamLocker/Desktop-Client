@@ -17,9 +17,9 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         setUserAgentStylesheet(STYLESHEET_MODENA);
-        Parent root = FXMLLoader.load(getClass().getResource("ui/MainWindow.fxml"));
-        primaryStage.setScene(new Scene(root, 800, 600));
-        primaryStage.setTitle("TeamLocker");
+        Parent root = FXMLLoader.load(getClass().getResource("ui/LoginWindow.fxml"));
+        primaryStage.setScene(new Scene(root));
+        primaryStage.setTitle("TeamLocker - Login");
         primaryStage.show();
     }
 }
