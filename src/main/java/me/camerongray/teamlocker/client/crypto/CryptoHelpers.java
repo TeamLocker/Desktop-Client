@@ -5,12 +5,13 @@ import org.abstractj.kalium.crypto.Random;
 import org.abstractj.kalium.crypto.SecretBox;
 import org.abstractj.kalium.encoders.Encoder;
 import org.abstractj.kalium.keys.*;
+import org.abstractj.kalium.encoders.Encoder;
 import static org.abstractj.kalium.NaCl.Sodium.*;
 
 /**
  * Created by camerong on 23/05/17.
  */
-class CryptoHelpers {
+public class CryptoHelpers {
     public static final int ENCRYPTION_TYPE_SECRET = 0;
     public static final int ENCRYPTION_TYPE_BOX = 1;
 
@@ -35,6 +36,10 @@ class CryptoHelpers {
         return new Password().hash(password.getBytes(), Encoder.HEX,
                 CRYPTO_PWHASH_SCRYPTSALSA208SHA256_OPSLIMIT_INTERACTIVE,
                 CRYPTO_PWHASH_SCRYPTSALSA208SHA256_MEMLIMIT_INTERACTIVE);
+    }
+
+    public static boolean verifyHash(String hash, String password) {
+        return new Password().verify(Encoder.HEX.decode(hash), password.getBytes());
     }
 
     public static int getOpsLimit() {
