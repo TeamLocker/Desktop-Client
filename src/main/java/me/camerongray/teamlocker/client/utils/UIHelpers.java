@@ -82,4 +82,36 @@ public class UIHelpers {
 
         alert.showAndWait();
     }
+
+    private static void showSimpleDialog(String title, String content, String header, Alert.AlertType alertType) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
+
+    public static void showInformationDialog(String title, String content, String header) {
+        showSimpleDialog(title, content, header, Alert.AlertType.ERROR);
+    }
+
+    public static void showWarningDialog(String title, String content, String header) {
+        showSimpleDialog(title, content, header, Alert.AlertType.ERROR);
+    }
+
+    public static void showErrorDialog(String title, String content, String header) {
+        showSimpleDialog(title, content, header, Alert.AlertType.ERROR);
+    }
+
+    public static void showInformationDialog(String title, String content) {
+        showInformationDialog(title, content, null);
+    }
+
+    public static void showWarningDialog(String title, String content) {
+        showWarningDialog(title, content, null);
+    }
+
+    public static void showErrorDialog(String title, String content) {
+        showErrorDialog(title, content, null);
+    }
 }

@@ -14,7 +14,7 @@ public class ApiClient {
         // Prevent instantiation
     }
 
-    public static ApiClient initialise(String host, int port, String username, String password) {
+    public static ApiClient initialise(String host, int port, String username, String password) throws AuthenticationException {
         instance = new ApiClient();
         instance.host = host;
         instance.port = port;
@@ -22,6 +22,9 @@ public class ApiClient {
         instance.password = password;
 
         // Check authentication here?
+        if(1==1) {
+            throw new AuthenticationException("Incorrect username/password");
+        }
 
         return instance;
     }
