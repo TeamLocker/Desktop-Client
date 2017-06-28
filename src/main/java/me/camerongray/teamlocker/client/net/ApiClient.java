@@ -34,7 +34,10 @@ public class ApiClient {
         instance.password = password;
 
         // Check authentication here?
-        ApiResponse response = instance.makeGetRequest("200");
+        ApiResponse response = instance.makeGetRequest("401");
+        if (response.getResponseCode() == 401) {
+            throw new AuthenticationException("Incorrect username/password!");
+        }
 
         return instance;
     }

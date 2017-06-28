@@ -1,22 +1,35 @@
 package me.camerongray.teamlocker.client.utils;
 
+import javafx.application.Platform;
+import javafx.beans.value.ObservableValue;
+import javafx.concurrent.Task;
+import javafx.concurrent.Worker;
+import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import me.camerongray.teamlocker.client.ui.ProgressSpinner;
+import me.camerongray.teamlocker.client.ui.UncaughtExceptionHandler;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.net.URL;
+import java.util.Observable;
 
 /**
  * Created by camerong on 20/05/17.
@@ -51,52 +64,62 @@ public class UIHelpers {
     }
 
     public static void showExceptionDialog(String title, String header, Throwable exception) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle(title);
-        alert.setHeaderText(header);
-        alert.setContentText(exception.toString());
-        alert.getDialogPane().setPrefWidth(900);
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle(title);
+                alert.setHeaderText(header);
+                alert.setContentText(exception.toString());
+                alert.getDialogPane().setPrefWidth(900);
 
-        StringWriter sw = new StringWriter();
-        PrintWriter pw = new PrintWriter(sw);
-        exception.printStackTrace(pw);
-        String exceptionText = sw.toString();
+                StringWriter sw = new StringWriter();
+                PrintWriter pw = new PrintWriter(sw);
+                exception.printStackTrace(pw);
+                String exceptionText = sw.toString();
 
-        Label label = new Label("Stacktrace:");
+                Label label = new Label("Stacktrace:");
 
-        TextArea textArea = new TextArea(exceptionText);
-        textArea.setEditable(false);
-        textArea.setWrapText(true);
+                TextArea textArea = new TextArea(exceptionText);
+                textArea.setEditable(false);
+                textArea.setWrapText(true);
 
-        textArea.setMaxWidth(Double.MAX_VALUE);
-        textArea.setMaxHeight(Double.MAX_VALUE);
-        GridPane.setVgrow(textArea, Priority.ALWAYS);
-        GridPane.setHgrow(textArea, Priority.ALWAYS);
+                textArea.setMaxWidth(Double.MAX_VALUE);
+                textArea.setMaxHeight(Double.MAX_VALUE);
+                GridPane.setVgrow(textArea, Priority.ALWAYS);
+                GridPane.setHgrow(textArea, Priority.ALWAYS);
 
-        GridPane expContent = new GridPane();
-        expContent.setMaxWidth(Double.MAX_VALUE);
-        expContent.add(label, 0, 0);
-        expContent.add(textArea, 0, 1);
+                GridPane expContent = new GridPane();
+                expContent.setMaxWidth(Double.MAX_VALUE);
+                expContent.add(label, 0, 0);
+                expContent.add(textArea, 0, 1);
 
-        alert.getDialogPane().setExpandableContent(expContent);
+                alert.getDialogPane().setExpandableContent(expContent);
 
-        alert.showAndWait();
+                alert.showAndWait();
+            }
+        });
     }
 
     private static void showSimpleDialog(String title, String content, String header, Alert.AlertType alertType) {
-        Alert alert = new Alert(alertType);
-        alert.setTitle(title);
-        alert.setHeaderText(header);
-        alert.setContentText(content);
-        alert.showAndWait();
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                Alert alert = new Alert(alertType);
+                alert.setTitle(title);
+                alert.setHeaderText(header);
+                alert.setContentText(content);
+                alert.showAndWait();
+            }
+        });
     }
 
     public static void showInformationDialog(String title, String content, String header) {
-        showSimpleDialog(title, content, header, Alert.AlertType.ERROR);
+        showSimpleDialog(title, content, header, Alert.AlertType.INFORMATION);
     }
 
     public static void showWarningDialog(String title, String content, String header) {
-        showSimpleDialog(title, content, header, Alert.AlertType.ERROR);
+        showSimpleDialog(title, content, header, Alert.AlertType.WARNING);
     }
 
     public static void showErrorDialog(String title, String content, String header) {
@@ -113,5 +136,24 @@ public class UIHelpers {
 
     public static void showErrorDialog(String title, String content) {
         showErrorDialog(title, content, null);
+    }
+
+    public static EventHandler<WorkerStateEvent> getTaskCompleteEventHandler(ProgressSpinner spinner) {
+        return new EventHandler<WorkerStateEvent>() {
+            @Override
+            public void handle(WorkerStateEvent event) {
+                spinner.hide();
+            }
+        };
+    }
+
+    public static EventHandler<WorkerStateEvent> getTaskFailedEventHandler(ProgressSpinner spinner, Task task) {
+        return new EventHandler<WorkerStateEvent>() {
+            @Override
+            public void handle(WorkerStateEvent event) {
+                spinner.hide();
+                UncaughtExceptionHandler.showDialog(task.getException());
+            }
+        };
     }
 }

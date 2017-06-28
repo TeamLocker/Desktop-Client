@@ -11,18 +11,20 @@ import me.camerongray.teamlocker.client.utils.UIHelpers;
 public class UncaughtExceptionHandler implements Thread.UncaughtExceptionHandler {
     @Override
     public void uncaughtException(Thread t, Throwable e) {
-        Throwable thrownException = e.getCause().getCause();
+        UncaughtExceptionHandler.showDialog(e);
+    }
 
-        if (thrownException instanceof AuthenticationException) {
-            UIHelpers.showErrorDialog("Authentication Error", thrownException.getMessage(),
+    public static void showDialog(Throwable e) {
+        if (e instanceof AuthenticationException) {
+            UIHelpers.showErrorDialog("Authentication Error", e.getMessage(),
                     "An authentication error occurred while attempting to service your request.");
-        } else if (thrownException instanceof NetworkException) {
-            UIHelpers.showErrorDialog("Error communicating with server", thrownException.getMessage(),
+        } else if (e instanceof NetworkException) {
+            UIHelpers.showErrorDialog("Error communicating with server", e.getMessage(),
                     "An error occurred while trying to contact the server. Check your network connection "+
                             "and try again");
         } else {
             UIHelpers.showExceptionDialog("Unexpected Error", "An unexpected error has occurred",
-                    thrownException);
+                    e);
         }
     }
 }
