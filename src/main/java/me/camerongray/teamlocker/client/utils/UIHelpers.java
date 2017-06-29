@@ -1,35 +1,23 @@
 package me.camerongray.teamlocker.client.utils;
 
 import javafx.application.Platform;
-import javafx.beans.value.ObservableValue;
-import javafx.concurrent.Task;
-import javafx.concurrent.Worker;
-import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
-import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
-import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import me.camerongray.teamlocker.client.ui.ProgressSpinner;
-import me.camerongray.teamlocker.client.ui.UncaughtExceptionHandler;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.net.URL;
-import java.util.Observable;
 
 /**
  * Created by camerong on 20/05/17.
@@ -136,24 +124,5 @@ public class UIHelpers {
 
     public static void showErrorDialog(String title, String content) {
         showErrorDialog(title, content, null);
-    }
-
-    public static EventHandler<WorkerStateEvent> getTaskCompleteEventHandler(ProgressSpinner spinner) {
-        return new EventHandler<WorkerStateEvent>() {
-            @Override
-            public void handle(WorkerStateEvent event) {
-                spinner.hide();
-            }
-        };
-    }
-
-    public static EventHandler<WorkerStateEvent> getTaskFailedEventHandler(ProgressSpinner spinner, Task task) {
-        return new EventHandler<WorkerStateEvent>() {
-            @Override
-            public void handle(WorkerStateEvent event) {
-                spinner.hide();
-                UncaughtExceptionHandler.showDialog(task.getException());
-            }
-        };
     }
 }

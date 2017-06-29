@@ -7,10 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.ProgressIndicator;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
@@ -50,8 +47,7 @@ public class LoginWindow {
         String username = txtUsername.getText();
         String password = txtPassword.getText();
 
-        ProgressSpinner spinner = new ProgressSpinner(stackPaneRoot, anchorPaneControl);
-        Task<Void> task = new Task<Void>() {
+        SpinnerTask<Void> task = new SpinnerTask<Void>(stackPaneRoot, anchorPaneControl) {
             @Override
             protected Void call() throws Exception {
                 updateMessage("Logging in...");
@@ -65,10 +61,7 @@ public class LoginWindow {
                 return null;
             }
         };
-        task.setOnFailed(UIHelpers.getTaskFailedEventHandler(spinner, task));
-        task.setOnSucceeded(UIHelpers.getTaskCompleteEventHandler(spinner));
-        task.setOnCancelled(UIHelpers.getTaskCompleteEventHandler(spinner));
-        spinner.show(task.messageProperty());
+
         new Thread(task).start();
     }
 }
