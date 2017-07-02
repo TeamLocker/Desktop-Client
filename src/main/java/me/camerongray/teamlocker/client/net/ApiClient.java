@@ -5,6 +5,7 @@ import com.google.protobuf.Message;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
+import me.camerongray.teamlocker.client.crypto.CryptoHelpers;
 import org.apache.commons.io.IOUtils;
 
 import java.io.IOException;
@@ -20,7 +21,7 @@ public class ApiClient {
     private String host;
     private int port;
     private String username;
-    private String password;
+    private String authKey;
 
     protected ApiClient() {
         // Prevent instantiation
@@ -31,7 +32,7 @@ public class ApiClient {
         instance.host = host;
         instance.port = port;
         instance.username = username;
-        instance.password = password;
+        instance.authKey = CryptoHelpers.hashPassword(password, username);
 
         // Check authentication here?
         ApiResponse response = instance.makeGetRequest("401");

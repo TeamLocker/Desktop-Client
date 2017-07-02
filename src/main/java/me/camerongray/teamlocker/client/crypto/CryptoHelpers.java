@@ -1,5 +1,6 @@
 package me.camerongray.teamlocker.client.crypto;
 
+import org.abstractj.kalium.crypto.Hash;
 import org.abstractj.kalium.crypto.Password;
 import org.abstractj.kalium.crypto.Random;
 import org.abstractj.kalium.crypto.SecretBox;
@@ -34,6 +35,14 @@ public class CryptoHelpers {
 
     public static String hashPassword(String password) {
         return new Password().hash(password.getBytes(), Encoder.HEX,
+                CRYPTO_PWHASH_SCRYPTSALSA208SHA256_OPSLIMIT_INTERACTIVE,
+                CRYPTO_PWHASH_SCRYPTSALSA208SHA256_MEMLIMIT_INTERACTIVE);
+    }
+
+    public static String hashPassword(String password, String username) {
+        // Hash username to generate salt, hashing ensures we have sufficient bytes as usernames tend to be short
+        byte[] salt = new Hash().blake2(username.getBytes());
+        return new Password().hash(password.getBytes(), Encoder.HEX, salt,
                 CRYPTO_PWHASH_SCRYPTSALSA208SHA256_OPSLIMIT_INTERACTIVE,
                 CRYPTO_PWHASH_SCRYPTSALSA208SHA256_MEMLIMIT_INTERACTIVE);
     }
