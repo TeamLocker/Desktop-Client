@@ -35,10 +35,11 @@ public class ApiClient {
         instance.authKey = CryptoHelpers.hashPassword(password, username);
 
         // Check authentication here?
-        ApiResponse response = instance.makeGetRequest("401");
+        ApiResponse response = instance.makeGetRequest("ping");
         if (response.getResponseCode() == 401) {
             throw new AuthenticationException("Incorrect username/password!");
         }
+
 
         return instance;
     }
@@ -53,7 +54,7 @@ public class ApiClient {
     private ApiResponse makeGetRequest(String path) throws NetworkException, IOException {
         HttpResponse<InputStream> binaryResponse;
         try {
-            binaryResponse = Unirest.get(getUrl(path)).asBinary();
+            binaryResponse = Unirest.get(getUrl(path)).basicAuth(username, authKey).asBinary();
         } catch (UnirestException ex) {
             throw new NetworkException(ex.getCause().getMessage(), ex);
         }
