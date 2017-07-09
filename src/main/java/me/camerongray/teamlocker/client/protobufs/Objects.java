@@ -44,14 +44,9 @@ public final class Objects {
         getFullNameBytes();
 
     /**
-     * <code>string auth_key = 4;</code>
+     * <code>bytes auth_key = 4;</code>
      */
-    java.lang.String getAuthKey();
-    /**
-     * <code>string auth_key = 4;</code>
-     */
-    com.google.protobuf.ByteString
-        getAuthKeyBytes();
+    com.google.protobuf.ByteString getAuthKey();
 
     /**
      * <code>bytes encrypted_private_key = 5;</code>
@@ -103,7 +98,7 @@ public final class Objects {
       id_ = 0;
       username_ = "";
       fullName_ = "";
-      authKey_ = "";
+      authKey_ = com.google.protobuf.ByteString.EMPTY;
       encryptedPrivateKey_ = com.google.protobuf.ByteString.EMPTY;
       encryptedPrivateKeyNonce_ = com.google.protobuf.ByteString.EMPTY;
       encryptedPrivateKeyOpsLimit_ = 0;
@@ -156,9 +151,8 @@ public final class Objects {
               break;
             }
             case 34: {
-              java.lang.String s = input.readStringRequireUtf8();
 
-              authKey_ = s;
+              authKey_ = input.readBytes();
               break;
             }
             case 42: {
@@ -297,37 +291,12 @@ public final class Objects {
     }
 
     public static final int AUTH_KEY_FIELD_NUMBER = 4;
-    private volatile java.lang.Object authKey_;
+    private com.google.protobuf.ByteString authKey_;
     /**
-     * <code>string auth_key = 4;</code>
+     * <code>bytes auth_key = 4;</code>
      */
-    public java.lang.String getAuthKey() {
-      java.lang.Object ref = authKey_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        authKey_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string auth_key = 4;</code>
-     */
-    public com.google.protobuf.ByteString
-        getAuthKeyBytes() {
-      java.lang.Object ref = authKey_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        authKey_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public com.google.protobuf.ByteString getAuthKey() {
+      return authKey_;
     }
 
     public static final int ENCRYPTED_PRIVATE_KEY_FIELD_NUMBER = 5;
@@ -414,8 +383,8 @@ public final class Objects {
       if (!getFullNameBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, fullName_);
       }
-      if (!getAuthKeyBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, authKey_);
+      if (!authKey_.isEmpty()) {
+        output.writeBytes(4, authKey_);
       }
       if (!encryptedPrivateKey_.isEmpty()) {
         output.writeBytes(5, encryptedPrivateKey_);
@@ -455,8 +424,9 @@ public final class Objects {
       if (!getFullNameBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, fullName_);
       }
-      if (!getAuthKeyBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, authKey_);
+      if (!authKey_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(4, authKey_);
       }
       if (!encryptedPrivateKey_.isEmpty()) {
         size += com.google.protobuf.CodedOutputStream
@@ -693,7 +663,7 @@ public final class Objects {
 
         fullName_ = "";
 
-        authKey_ = "";
+        authKey_ = com.google.protobuf.ByteString.EMPTY;
 
         encryptedPrivateKey_ = com.google.protobuf.ByteString.EMPTY;
 
@@ -794,9 +764,8 @@ public final class Objects {
           fullName_ = other.fullName_;
           onChanged();
         }
-        if (!other.getAuthKey().isEmpty()) {
-          authKey_ = other.authKey_;
-          onChanged();
+        if (other.getAuthKey() != com.google.protobuf.ByteString.EMPTY) {
+          setAuthKey(other.getAuthKey());
         }
         if (other.getEncryptedPrivateKey() != com.google.protobuf.ByteString.EMPTY) {
           setEncryptedPrivateKey(other.getEncryptedPrivateKey());
@@ -1009,43 +978,17 @@ public final class Objects {
         return this;
       }
 
-      private java.lang.Object authKey_ = "";
+      private com.google.protobuf.ByteString authKey_ = com.google.protobuf.ByteString.EMPTY;
       /**
-       * <code>string auth_key = 4;</code>
+       * <code>bytes auth_key = 4;</code>
        */
-      public java.lang.String getAuthKey() {
-        java.lang.Object ref = authKey_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          authKey_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+      public com.google.protobuf.ByteString getAuthKey() {
+        return authKey_;
       }
       /**
-       * <code>string auth_key = 4;</code>
+       * <code>bytes auth_key = 4;</code>
        */
-      public com.google.protobuf.ByteString
-          getAuthKeyBytes() {
-        java.lang.Object ref = authKey_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          authKey_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string auth_key = 4;</code>
-       */
-      public Builder setAuthKey(
-          java.lang.String value) {
+      public Builder setAuthKey(com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -1055,25 +998,11 @@ public final class Objects {
         return this;
       }
       /**
-       * <code>string auth_key = 4;</code>
+       * <code>bytes auth_key = 4;</code>
        */
       public Builder clearAuthKey() {
         
         authKey_ = getDefaultInstance().getAuthKey();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string auth_key = 4;</code>
-       */
-      public Builder setAuthKeyBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        authKey_ = value;
         onChanged();
         return this;
       }
@@ -1336,7 +1265,7 @@ public final class Objects {
     java.lang.String[] descriptorData = {
       "\n\rObjects.proto\"\223\002\n\004User\022\n\n\002id\030\001 \001(\005\022\020\n\010" +
       "username\030\002 \001(\t\022\021\n\tfull_name\030\003 \001(\t\022\020\n\010aut" +
-      "h_key\030\004 \001(\t\022\035\n\025encrypted_private_key\030\005 \001" +
+      "h_key\030\004 \001(\014\022\035\n\025encrypted_private_key\030\005 \001" +
       "(\014\022#\n\033encrypted_private_key_nonce\030\006 \001(\014\022" +
       "\'\n\037encrypted_private_key_ops_limit\030\007 \001(\005" +
       "\022\'\n\037encrypted_private_key_mem_limit\030\010 \001(" +

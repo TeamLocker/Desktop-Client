@@ -6,7 +6,7 @@ import org.abstractj.kalium.keys.KeyPair;
  * Created by camerong on 24/05/17.
  */
 public class UserCrypto {
-    private String authKey;
+    private byte[] authKey;
     private byte[] encryptedPrivateKey;
     private byte[] encryptedPrivateKeyNonce;
     private int encryptedPrivateKeyOpsLimit;
@@ -14,7 +14,7 @@ public class UserCrypto {
     private byte[] publicKey;
     private byte[] salt;
 
-    public UserCrypto(String authKey, byte[] encryptedPrivateKey, byte[] encryptedPrivateKeyNonce,
+    public UserCrypto(byte[] authKey, byte[] encryptedPrivateKey, byte[] encryptedPrivateKeyNonce,
                       int encryptedPrivateKeyOpsLimit, long encryptedPrivateKeyMemLimit, byte[] publicKey,
                       byte[] salt) {
         this.authKey = authKey;
@@ -36,13 +36,13 @@ public class UserCrypto {
         byte[] encryptedPrivateKey = CryptoHelpers.encryptWithSecret(keyPair.getPrivateKey().toBytes(), passwordKey,
                 encryptedPrivateKeyNonce);
 
-        String authKey = CryptoHelpers.hashPassword(password);
+        byte[] authKey = CryptoHelpers.hashPassword(password);
 
         return new UserCrypto(authKey, encryptedPrivateKey, encryptedPrivateKeyNonce, CryptoHelpers.getOpsLimit(),
                 CryptoHelpers.getMemLimit(), keyPair.getPublicKey().toBytes(), salt);
     }
 
-    public String getAuthKey() {
+    public byte[] getAuthKey() {
         return authKey;
     }
 

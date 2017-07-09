@@ -21,14 +21,14 @@ public class CryptoHelpersTest {
     @Test
     public void testPasswordHashingCorrect() throws Exception {
         String password = "PASSWORD!";
-        String hash = CryptoHelpers.hashPassword(password);
+        byte[] hash = CryptoHelpers.hashPassword(password);
         Assert.assertTrue("Verification of a valid hash failed", CryptoHelpers.verifyHash(hash, password));
     }
 
     @Test
     public void testPasswordHashingIncorrect() throws Exception {
         String password = "PASSWORD!";
-        String hash = CryptoHelpers.hashPassword(password);
+        byte[] hash = CryptoHelpers.hashPassword(password);
         Assert.assertFalse("Verification of an invalid hash succeeded", CryptoHelpers.verifyHash(hash,
                 "x"+password));
     }

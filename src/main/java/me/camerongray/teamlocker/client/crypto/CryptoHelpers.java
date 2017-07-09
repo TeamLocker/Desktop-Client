@@ -1,5 +1,8 @@
 package me.camerongray.teamlocker.client.crypto;
 
+import com.google.protobuf.ByteString;
+import com.google.protobuf.InvalidProtocolBufferException;
+import me.camerongray.teamlocker.client.protobufs.Libsodium;
 import org.abstractj.kalium.crypto.Hash;
 import org.abstractj.kalium.crypto.Password;
 import org.abstractj.kalium.crypto.Random;
@@ -33,23 +36,29 @@ public class CryptoHelpers {
         return key;
     }
 
-    public static String hashPassword(String password) {
-        return new Password().hash(password.getBytes(), Encoder.HEX,
-                CRYPTO_PWHASH_SCRYPTSALSA208SHA256_OPSLIMIT_INTERACTIVE,
-                CRYPTO_PWHASH_SCRYPTSALSA208SHA256_MEMLIMIT_INTERACTIVE);
+    public static byte[] hashPassword(String password) {
+        int opsLimit = CRYPTO_PWHASH_SCRYPTSALSA208SHA256_OPSLIMIT_INTERACTIVE;
+        int memLimit = CRYPTO_PWHASH_SCRYPTSALSA208SHA256_MEMLIMIT_INTERACTIVE;
+
+        byte[] hash = new Password().hash(password.getBytes(), Encoder.HEX, opsLimit, memLimit).getBytes();
+
+        return packHash(hash, opsLimit, memLimit);
     }
 
-    public static String hashPassword(String password, String username) {
+    public static byte[] hashPassword(String password, String username) {
         // Hash username to generate salt, hashing ensures we have sufficient bytes as usernames tend to be short
         byte[] salt = java.util.Arrays.copyOf(new Hash().sha512(username.getBytes()), 32);
 
-        return new Password().hash(password.getBytes(), Encoder.HEX, salt,
-                CRYPTO_PWHASH_SCRYPTSALSA208SHA256_OPSLIMIT_INTERACTIVE,
-                CRYPTO_PWHASH_SCRYPTSALSA208SHA256_MEMLIMIT_INTERACTIVE);
+        int opsLimit = CRYPTO_PWHASH_SCRYPTSALSA208SHA256_OPSLIMIT_INTERACTIVE;
+        int memLimit = CRYPTO_PWHASH_SCRYPTSALSA208SHA256_MEMLIMIT_INTERACTIVE;
+
+        byte[] hash = new Password().hash(password.getBytes(), Encoder.RAW, salt, opsLimit, memLimit).getBytes();
+
+        return packHash(hash, opsLimit, memLimit);
     }
 
-    public static boolean verifyHash(String hash, String password) {
-        return new Password().verify(Encoder.HEX.decode(hash), password.getBytes());
+    public static boolean verifyHash(byte[] hash, String password) throws InvalidProtocolBufferException {
+        return new Password().verify(unpackLibsodiumItem(hash).getData().toByteArray(), password.getBytes());
     }
 
     public static int getOpsLimit() {
@@ -74,5 +83,19 @@ public class CryptoHelpers {
 
     public static byte[] generateSalt() {
         return new Random().randomBytes();
+    }
+
+    private static byte[] packHash(byte[] hash, int opsLimit, int memLimit) {
+        Libsodium.LibsodiumItem.Builder packedHash = Libsodium.LibsodiumItem.newBuilder();
+        packedHash.setData(ByteString.copyFrom(hash));
+        packedHash.setOpsLimit(opsLimit);
+        packedHash.setMemLimit(memLimit);
+
+        return packedHash.build().toByteArray();
+    }
+
+    private static Libsodium.LibsodiumItem unpackLibsodiumItem(byte[] packedItem) throws InvalidProtocolBufferException {
+        Libsodium.LibsodiumItem unpacked = Libsodium.LibsodiumItem.parseFrom(packedItem);
+        return unpacked;
     }
 }

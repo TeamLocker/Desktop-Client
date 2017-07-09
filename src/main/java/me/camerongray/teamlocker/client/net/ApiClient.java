@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Base64;
 
 /**
  * Created by camerong on 01/06/17.
@@ -21,7 +22,7 @@ public class ApiClient {
     private String host;
     private int port;
     private String username;
-    private String authKey;
+    private byte[] authKey;
 
     protected ApiClient() {
         // Prevent instantiation
@@ -54,7 +55,8 @@ public class ApiClient {
     private ApiResponse makeGetRequest(String path) throws NetworkException, IOException {
         HttpResponse<InputStream> binaryResponse;
         try {
-            binaryResponse = Unirest.get(getUrl(path)).basicAuth(username, authKey).asBinary();
+            binaryResponse = Unirest.get(getUrl(path)).basicAuth(username,
+                    Base64.getEncoder().encodeToString(authKey)).asBinary();
         } catch (UnirestException ex) {
             throw new NetworkException(ex.getCause().getMessage(), ex);
         }

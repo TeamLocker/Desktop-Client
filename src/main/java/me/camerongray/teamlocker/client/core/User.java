@@ -11,7 +11,7 @@ public class User {
     private int id;
     private String username;
     private String fullName;
-    private String authKey;
+    private byte[] authKey;
     private byte[] encryptedPrivateKey;
     private byte[] encryptedPrivateKeyNonce;
     private int encryptedPrivateKeyOpsLimit;
@@ -42,7 +42,7 @@ public class User {
         Objects.User.Builder builder = Objects.User.newBuilder();
         builder.setUsername(username);
         builder.setFullName(fullName);
-        builder.setAuthKey(authKey);
+        builder.setAuthKey(ByteString.copyFrom(authKey));
         builder.setEncryptedPrivateKey(ByteString.copyFrom(encryptedPrivateKey));
         builder.setEncryptedPrivateKeyNonce(ByteString.copyFrom(encryptedPrivateKeyNonce));
         builder.setEncryptedPrivateKeyOpsLimit(encryptedPrivateKeyOpsLimit);
