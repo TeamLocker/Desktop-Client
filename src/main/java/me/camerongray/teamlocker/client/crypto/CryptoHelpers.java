@@ -6,7 +6,7 @@ import org.abstractj.kalium.crypto.Random;
 import org.abstractj.kalium.crypto.SecretBox;
 import org.abstractj.kalium.encoders.Encoder;
 import org.abstractj.kalium.keys.*;
-import org.abstractj.kalium.encoders.Encoder;
+
 import static org.abstractj.kalium.NaCl.Sodium.*;
 
 /**
@@ -41,7 +41,8 @@ public class CryptoHelpers {
 
     public static String hashPassword(String password, String username) {
         // Hash username to generate salt, hashing ensures we have sufficient bytes as usernames tend to be short
-        byte[] salt = new Hash().blake2(username.getBytes());
+        byte[] salt = java.util.Arrays.copyOf(new Hash().sha512(username.getBytes()), 32);
+
         return new Password().hash(password.getBytes(), Encoder.HEX, salt,
                 CRYPTO_PWHASH_SCRYPTSALSA208SHA256_OPSLIMIT_INTERACTIVE,
                 CRYPTO_PWHASH_SCRYPTSALSA208SHA256_MEMLIMIT_INTERACTIVE);
