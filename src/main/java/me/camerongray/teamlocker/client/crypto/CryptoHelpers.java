@@ -40,7 +40,7 @@ public class CryptoHelpers {
         int opsLimit = CRYPTO_PWHASH_SCRYPTSALSA208SHA256_OPSLIMIT_INTERACTIVE;
         int memLimit = CRYPTO_PWHASH_SCRYPTSALSA208SHA256_MEMLIMIT_INTERACTIVE;
 
-        byte[] hash = new Password().hash(password.getBytes(), Encoder.HEX, opsLimit, memLimit).getBytes();
+        byte[] hash = new Password().hash(password.getBytes(), Encoder.RAW, opsLimit, memLimit).getBytes();
 
         return packHash(hash, opsLimit, memLimit);
     }
