@@ -41,7 +41,6 @@ public class ApiClient {
             throw new AuthenticationException("Incorrect username/password!");
         }
 
-
         return instance;
     }
 

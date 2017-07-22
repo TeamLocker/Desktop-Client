@@ -10,6 +10,8 @@ import org.abstractj.kalium.crypto.SecretBox;
 import org.abstractj.kalium.encoders.Encoder;
 import org.abstractj.kalium.keys.*;
 
+import java.util.Base64;
+
 import static org.abstractj.kalium.NaCl.Sodium.*;
 
 /**
@@ -52,7 +54,8 @@ public class CryptoHelpers {
         int opsLimit = CRYPTO_PWHASH_SCRYPTSALSA208SHA256_OPSLIMIT_INTERACTIVE;
         int memLimit = CRYPTO_PWHASH_SCRYPTSALSA208SHA256_MEMLIMIT_INTERACTIVE;
 
-        byte[] hash = new Password().hash(password.getBytes(), Encoder.RAW, salt, opsLimit, memLimit).getBytes();
+        byte[] hash = new Password().deriveKey(CRYPTO_PWHASH_SCRYPTSALSA208SHA256_OUTBYTES, password.getBytes(), salt,
+                opsLimit, memLimit);
 
         return packHash(hash, opsLimit, memLimit);
     }
