@@ -51,7 +51,7 @@ public class ApiClient {
         return instance;
     }
 
-    private ApiResponse makeGetRequest(String path) throws NetworkException, IOException {
+    public ApiResponse makeGetRequest(String path) throws NetworkException, IOException {
         HttpResponse<InputStream> binaryResponse;
         try {
             binaryResponse = Unirest.get(getUrl(path)).basicAuth(username,
@@ -63,6 +63,14 @@ public class ApiClient {
         ApiResponse response = new ApiResponse(IOUtils.toByteArray(binaryResponse.getBody()),
                 binaryResponse.getStatus());
         return response;
+    }
+
+    public ApiResponse makeValidatedGetRequest(String path) throws IOException, NetworkException, ServerProvidedException {
+        ApiResponse response = this.makeGetRequest(path);
+        if (response.getResponseCode() == 200) {
+            return response;
+        }
+        throw new ServerProvidedException("SERVER PROVIDED MESSAGE HERE"); // TODO: Get this message from server
     }
 
     private String getUrl(String path) throws MalformedURLException {

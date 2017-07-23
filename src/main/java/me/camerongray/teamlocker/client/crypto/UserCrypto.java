@@ -26,7 +26,7 @@ public class UserCrypto {
         this.salt = salt;
     }
 
-    public static UserCrypto generateNewCryptoAttribtues(String password) {
+    public static UserCrypto generateNewCryptoAttributes(String password) {
         KeyPair keyPair = CryptoHelpers.generateKeyPair();
 
         byte[] salt = CryptoHelpers.generateSalt();

@@ -12,6 +12,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import me.camerongray.teamlocker.client.core.User;
 import me.camerongray.teamlocker.client.net.ApiClient;
 import me.camerongray.teamlocker.client.net.AuthenticationException;
 import me.camerongray.teamlocker.client.utils.UIHelpers;
@@ -57,6 +58,13 @@ public class LoginWindow {
                     UIHelpers.showErrorDialog("Login error", ex.getMessage());
                     return null;
                 }
+
+                updateMessage("Getting user...");
+                User user = User.getSelfFromServer();
+
+                System.out.println(user.getId());
+                System.out.println(user.getUsername());
+                System.out.println(user.getFullName());
 
                 return null;
             }
