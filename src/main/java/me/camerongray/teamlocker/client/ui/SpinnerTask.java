@@ -12,6 +12,8 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import me.camerongray.teamlocker.client.utils.UIHelpers;
 
+import java.util.concurrent.Callable;
+
 /**
  * Created by camerong on 29/06/17.
  */
@@ -19,11 +21,15 @@ public class SpinnerTask<T> extends Task<T> {
     Pane rootPane;
     Pane controlPane;
     VBox progressBox;
+    Runnable onComplete;
 
     EventHandler<WorkerStateEvent> taskCompleteEventHandler = new EventHandler<WorkerStateEvent>() {
         @Override
         public void handle(WorkerStateEvent event) {
             SpinnerTask.this.hide();
+            if (onComplete != null) {
+                onComplete.run();
+            }
         }
     };
 
@@ -37,12 +43,17 @@ public class SpinnerTask<T> extends Task<T> {
     };
 
     public SpinnerTask(Pane rootPane, Pane controlPane) {
+        this(rootPane, controlPane, null);
+    }
+
+    public SpinnerTask(Pane rootPane, Pane controlPane, Runnable onComplete) {
         this.rootPane = rootPane;
         this.controlPane = controlPane;
         this.showSpinner(this.messageProperty());
         this.setOnCancelled(this.taskCompleteEventHandler);
         this.setOnSucceeded(this.taskCompleteEventHandler);
         this.setOnFailed(this.taskFailedEventHandler);
+        this.onComplete = onComplete;
     }
 
     @Override
@@ -74,6 +85,10 @@ public class SpinnerTask<T> extends Task<T> {
                 controlPane.setDisable(false);
             }
         });
+    }
+
+    public void setOnComplete(Runnable onComplete) {
+        this.onComplete = onComplete;
     }
 
     public EventHandler<WorkerStateEvent> getHideWorkerEventHandler() {

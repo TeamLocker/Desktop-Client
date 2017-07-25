@@ -45,8 +45,8 @@ public class UIHelpers {
             stage.initModality(Modality.APPLICATION_MODAL);
         }
 
-        stage.setTitle(title);
         stage.setScene(new Scene(root, width, height));
+        stage.setTitle(title);
 
         return stage;
     }

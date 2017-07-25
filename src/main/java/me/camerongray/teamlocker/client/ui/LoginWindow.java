@@ -48,9 +48,9 @@ public class LoginWindow {
         String username = txtUsername.getText();
         String password = txtPassword.getText();
 
-        SpinnerTask<Void> task = new SpinnerTask<Void>(stackPaneRoot, anchorPaneControl) {
+        SpinnerTask<User> task = new SpinnerTask<User>(stackPaneRoot, anchorPaneControl) {
             @Override
-            protected Void call() throws Exception {
+            protected User call() throws Exception {
                 updateMessage("Logging in...");
                 try {
                     ApiClient.initialise(server, port, username, password);
@@ -62,13 +62,19 @@ public class LoginWindow {
                 updateMessage("Getting user...");
                 User user = User.getSelfFromServer();
 
-                System.out.println(user.getId());
-                System.out.println(user.getUsername());
-                System.out.println(user.getFullName());
-
-                return null;
+                return user;
             }
         };
+
+        task.setOnComplete(new Runnable() {
+            @Override
+            public void run() {
+                User user = task.getValue();
+                MainWindow controller = new MainWindow(user);
+                UIHelpers.createStage(getClass().getResource("MainWindow.fxml"), controller, "TeamLocker", 640,
+                        480, false).show();
+            }
+        });
 
         new Thread(task).start();
     }
