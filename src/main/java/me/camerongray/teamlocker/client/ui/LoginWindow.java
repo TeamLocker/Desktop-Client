@@ -95,7 +95,7 @@ public class LoginWindow implements Initializable {
                 MainWindow controller = new MainWindow(user);
                 UIHelpers.createStage(getClass().getResource("MainWindow.fxml"), controller, "TeamLocker", 640,
                         480, false).show();
-                // TODO: Hide this window!
+                UIHelpers.closeStage(event);
             }
         });
 
@@ -110,17 +110,19 @@ public class LoginWindow implements Initializable {
         String server = preferences.get("server", "");
         String port = preferences.get("port", "");
 
-        if (!username.equals("")) {
-            txtUsername.setText(username);
-            chkRememberUsername.setSelected(true);
-        }
-
         if (!server.equals("") && !port.equals("")) {
             txtServer.setText(server);
             txtPort.setText(port);
             chkRememberServer.setSelected(true);
+            Platform.runLater(()->txtUsername.requestFocus());
+            if (!username.equals("")) {
+                Platform.runLater(()->txtPassword.requestFocus());
+            }
         }
 
-        // TODO: Automatically put cursor in the correct text box?
+        if (!username.equals("")) {
+            txtUsername.setText(username);
+            chkRememberUsername.setSelected(true);
+        }
     }
 }
