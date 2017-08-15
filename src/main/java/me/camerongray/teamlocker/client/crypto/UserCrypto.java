@@ -12,18 +12,18 @@ public class UserCrypto {
     private int encryptedPrivateKeyOpsLimit;
     private long encryptedPrivateKeyMemLimit;
     private byte[] publicKey;
-    private byte[] salt;
+    private byte[] kdfSalt;
 
     public UserCrypto(byte[] authKey, byte[] encryptedPrivateKey, byte[] encryptedPrivateKeyNonce,
                       int encryptedPrivateKeyOpsLimit, long encryptedPrivateKeyMemLimit, byte[] publicKey,
-                      byte[] salt) {
+                      byte[] kdfSalt) {
         this.authKey = authKey;
         this.encryptedPrivateKey = encryptedPrivateKey;
         this.encryptedPrivateKeyNonce = encryptedPrivateKeyNonce;
         this.encryptedPrivateKeyOpsLimit = encryptedPrivateKeyOpsLimit;
         this.encryptedPrivateKeyMemLimit = encryptedPrivateKeyMemLimit;
         this.publicKey = publicKey;
-        this.salt = salt;
+        this.kdfSalt = kdfSalt;
     }
 
     public static UserCrypto generateNewCryptoAttributes(String password) {
@@ -66,7 +66,7 @@ public class UserCrypto {
         return publicKey;
     }
 
-    public byte[] getSalt() {
-        return salt;
+    public byte[] getKdfSalt() {
+        return kdfSalt;
     }
 }

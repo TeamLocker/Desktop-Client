@@ -19,52 +19,65 @@ public final class Objects {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 id = 1;</code>
+     * <code>optional int32 id = 1;</code>
      */
     int getId();
 
     /**
-     * <code>string username = 2;</code>
+     * <code>optional string username = 2;</code>
      */
     java.lang.String getUsername();
     /**
-     * <code>string username = 2;</code>
+     * <code>optional string username = 2;</code>
      */
     com.google.protobuf.ByteString
         getUsernameBytes();
 
     /**
-     * <code>string full_name = 3;</code>
+     * <code>optional string full_name = 3;</code>
      */
     java.lang.String getFullName();
     /**
-     * <code>string full_name = 3;</code>
+     * <code>optional string full_name = 3;</code>
      */
     com.google.protobuf.ByteString
         getFullNameBytes();
 
     /**
-     * <code>bytes auth_key_hash = 4;</code>
+     * <code>optional bytes auth_key = 4;</code>
+     */
+    com.google.protobuf.ByteString getAuthKey();
+
+    /**
+     * <code>optional bytes auth_key_hash = 5;</code>
      */
     com.google.protobuf.ByteString getAuthKeyHash();
 
     /**
-     * <code>bytes encrypted_private_key = 5;</code>
+     * <code>optional .LibsodiumItem encrypted_private_key = 6;</code>
      */
-    com.google.protobuf.ByteString getEncryptedPrivateKey();
+    boolean hasEncryptedPrivateKey();
+    /**
+     * <code>optional .LibsodiumItem encrypted_private_key = 6;</code>
+     */
+    me.camerongray.teamlocker.client.protobufs.Libsodium.LibsodiumItem getEncryptedPrivateKey();
+    /**
+     * <code>optional .LibsodiumItem encrypted_private_key = 6;</code>
+     */
+    me.camerongray.teamlocker.client.protobufs.Libsodium.LibsodiumItemOrBuilder getEncryptedPrivateKeyOrBuilder();
 
     /**
-     * <code>bytes public_key = 6;</code>
+     * <code>optional bytes public_key = 7;</code>
      */
     com.google.protobuf.ByteString getPublicKey();
 
     /**
-     * <code>bytes kdf_salt = 7;</code>
+     * <code>optional bytes kdf_salt = 8;</code>
      */
     com.google.protobuf.ByteString getKdfSalt();
 
     /**
-     * <code>bool is_admin = 8;</code>
+     * <code>optional bool is_admin = 9;</code>
      */
     boolean getIsAdmin();
   }
@@ -83,8 +96,8 @@ public final class Objects {
       id_ = 0;
       username_ = "";
       fullName_ = "";
+      authKey_ = com.google.protobuf.ByteString.EMPTY;
       authKeyHash_ = com.google.protobuf.ByteString.EMPTY;
-      encryptedPrivateKey_ = com.google.protobuf.ByteString.EMPTY;
       publicKey_ = com.google.protobuf.ByteString.EMPTY;
       kdfSalt_ = com.google.protobuf.ByteString.EMPTY;
       isAdmin_ = false;
@@ -134,25 +147,38 @@ public final class Objects {
             }
             case 34: {
 
-              authKeyHash_ = input.readBytes();
+              authKey_ = input.readBytes();
               break;
             }
             case 42: {
 
-              encryptedPrivateKey_ = input.readBytes();
+              authKeyHash_ = input.readBytes();
               break;
             }
             case 50: {
+              me.camerongray.teamlocker.client.protobufs.Libsodium.LibsodiumItem.Builder subBuilder = null;
+              if (encryptedPrivateKey_ != null) {
+                subBuilder = encryptedPrivateKey_.toBuilder();
+              }
+              encryptedPrivateKey_ = input.readMessage(me.camerongray.teamlocker.client.protobufs.Libsodium.LibsodiumItem.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(encryptedPrivateKey_);
+                encryptedPrivateKey_ = subBuilder.buildPartial();
+              }
 
-              publicKey_ = input.readBytes();
               break;
             }
             case 58: {
 
+              publicKey_ = input.readBytes();
+              break;
+            }
+            case 66: {
+
               kdfSalt_ = input.readBytes();
               break;
             }
-            case 64: {
+            case 72: {
 
               isAdmin_ = input.readBool();
               break;
@@ -183,7 +209,7 @@ public final class Objects {
     public static final int ID_FIELD_NUMBER = 1;
     private int id_;
     /**
-     * <code>int32 id = 1;</code>
+     * <code>optional int32 id = 1;</code>
      */
     public int getId() {
       return id_;
@@ -192,7 +218,7 @@ public final class Objects {
     public static final int USERNAME_FIELD_NUMBER = 2;
     private volatile java.lang.Object username_;
     /**
-     * <code>string username = 2;</code>
+     * <code>optional string username = 2;</code>
      */
     public java.lang.String getUsername() {
       java.lang.Object ref = username_;
@@ -207,7 +233,7 @@ public final class Objects {
       }
     }
     /**
-     * <code>string username = 2;</code>
+     * <code>optional string username = 2;</code>
      */
     public com.google.protobuf.ByteString
         getUsernameBytes() {
@@ -226,7 +252,7 @@ public final class Objects {
     public static final int FULL_NAME_FIELD_NUMBER = 3;
     private volatile java.lang.Object fullName_;
     /**
-     * <code>string full_name = 3;</code>
+     * <code>optional string full_name = 3;</code>
      */
     public java.lang.String getFullName() {
       java.lang.Object ref = fullName_;
@@ -241,7 +267,7 @@ public final class Objects {
       }
     }
     /**
-     * <code>string full_name = 3;</code>
+     * <code>optional string full_name = 3;</code>
      */
     public com.google.protobuf.ByteString
         getFullNameBytes() {
@@ -257,46 +283,67 @@ public final class Objects {
       }
     }
 
-    public static final int AUTH_KEY_HASH_FIELD_NUMBER = 4;
+    public static final int AUTH_KEY_FIELD_NUMBER = 4;
+    private com.google.protobuf.ByteString authKey_;
+    /**
+     * <code>optional bytes auth_key = 4;</code>
+     */
+    public com.google.protobuf.ByteString getAuthKey() {
+      return authKey_;
+    }
+
+    public static final int AUTH_KEY_HASH_FIELD_NUMBER = 5;
     private com.google.protobuf.ByteString authKeyHash_;
     /**
-     * <code>bytes auth_key_hash = 4;</code>
+     * <code>optional bytes auth_key_hash = 5;</code>
      */
     public com.google.protobuf.ByteString getAuthKeyHash() {
       return authKeyHash_;
     }
 
-    public static final int ENCRYPTED_PRIVATE_KEY_FIELD_NUMBER = 5;
-    private com.google.protobuf.ByteString encryptedPrivateKey_;
+    public static final int ENCRYPTED_PRIVATE_KEY_FIELD_NUMBER = 6;
+    private me.camerongray.teamlocker.client.protobufs.Libsodium.LibsodiumItem encryptedPrivateKey_;
     /**
-     * <code>bytes encrypted_private_key = 5;</code>
+     * <code>optional .LibsodiumItem encrypted_private_key = 6;</code>
      */
-    public com.google.protobuf.ByteString getEncryptedPrivateKey() {
-      return encryptedPrivateKey_;
+    public boolean hasEncryptedPrivateKey() {
+      return encryptedPrivateKey_ != null;
+    }
+    /**
+     * <code>optional .LibsodiumItem encrypted_private_key = 6;</code>
+     */
+    public me.camerongray.teamlocker.client.protobufs.Libsodium.LibsodiumItem getEncryptedPrivateKey() {
+      return encryptedPrivateKey_ == null ? me.camerongray.teamlocker.client.protobufs.Libsodium.LibsodiumItem.getDefaultInstance() : encryptedPrivateKey_;
+    }
+    /**
+     * <code>optional .LibsodiumItem encrypted_private_key = 6;</code>
+     */
+    public me.camerongray.teamlocker.client.protobufs.Libsodium.LibsodiumItemOrBuilder getEncryptedPrivateKeyOrBuilder() {
+      return getEncryptedPrivateKey();
     }
 
-    public static final int PUBLIC_KEY_FIELD_NUMBER = 6;
+    public static final int PUBLIC_KEY_FIELD_NUMBER = 7;
     private com.google.protobuf.ByteString publicKey_;
     /**
-     * <code>bytes public_key = 6;</code>
+     * <code>optional bytes public_key = 7;</code>
      */
     public com.google.protobuf.ByteString getPublicKey() {
       return publicKey_;
     }
 
-    public static final int KDF_SALT_FIELD_NUMBER = 7;
+    public static final int KDF_SALT_FIELD_NUMBER = 8;
     private com.google.protobuf.ByteString kdfSalt_;
     /**
-     * <code>bytes kdf_salt = 7;</code>
+     * <code>optional bytes kdf_salt = 8;</code>
      */
     public com.google.protobuf.ByteString getKdfSalt() {
       return kdfSalt_;
     }
 
-    public static final int IS_ADMIN_FIELD_NUMBER = 8;
+    public static final int IS_ADMIN_FIELD_NUMBER = 9;
     private boolean isAdmin_;
     /**
-     * <code>bool is_admin = 8;</code>
+     * <code>optional bool is_admin = 9;</code>
      */
     public boolean getIsAdmin() {
       return isAdmin_;
@@ -323,20 +370,23 @@ public final class Objects {
       if (!getFullNameBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, fullName_);
       }
-      if (!authKeyHash_.isEmpty()) {
-        output.writeBytes(4, authKeyHash_);
+      if (!authKey_.isEmpty()) {
+        output.writeBytes(4, authKey_);
       }
-      if (!encryptedPrivateKey_.isEmpty()) {
-        output.writeBytes(5, encryptedPrivateKey_);
+      if (!authKeyHash_.isEmpty()) {
+        output.writeBytes(5, authKeyHash_);
+      }
+      if (encryptedPrivateKey_ != null) {
+        output.writeMessage(6, getEncryptedPrivateKey());
       }
       if (!publicKey_.isEmpty()) {
-        output.writeBytes(6, publicKey_);
+        output.writeBytes(7, publicKey_);
       }
       if (!kdfSalt_.isEmpty()) {
-        output.writeBytes(7, kdfSalt_);
+        output.writeBytes(8, kdfSalt_);
       }
       if (isAdmin_ != false) {
-        output.writeBool(8, isAdmin_);
+        output.writeBool(9, isAdmin_);
       }
     }
 
@@ -355,25 +405,29 @@ public final class Objects {
       if (!getFullNameBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, fullName_);
       }
+      if (!authKey_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(4, authKey_);
+      }
       if (!authKeyHash_.isEmpty()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(4, authKeyHash_);
+          .computeBytesSize(5, authKeyHash_);
       }
-      if (!encryptedPrivateKey_.isEmpty()) {
+      if (encryptedPrivateKey_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(5, encryptedPrivateKey_);
+          .computeMessageSize(6, getEncryptedPrivateKey());
       }
       if (!publicKey_.isEmpty()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(6, publicKey_);
+          .computeBytesSize(7, publicKey_);
       }
       if (!kdfSalt_.isEmpty()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(7, kdfSalt_);
+          .computeBytesSize(8, kdfSalt_);
       }
       if (isAdmin_ != false) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(8, isAdmin_);
+          .computeBoolSize(9, isAdmin_);
       }
       memoizedSize = size;
       return size;
@@ -397,10 +451,15 @@ public final class Objects {
           .equals(other.getUsername());
       result = result && getFullName()
           .equals(other.getFullName());
+      result = result && getAuthKey()
+          .equals(other.getAuthKey());
       result = result && getAuthKeyHash()
           .equals(other.getAuthKeyHash());
-      result = result && getEncryptedPrivateKey()
-          .equals(other.getEncryptedPrivateKey());
+      result = result && (hasEncryptedPrivateKey() == other.hasEncryptedPrivateKey());
+      if (hasEncryptedPrivateKey()) {
+        result = result && getEncryptedPrivateKey()
+            .equals(other.getEncryptedPrivateKey());
+      }
       result = result && getPublicKey()
           .equals(other.getPublicKey());
       result = result && getKdfSalt()
@@ -416,17 +475,21 @@ public final class Objects {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId();
       hash = (37 * hash) + USERNAME_FIELD_NUMBER;
       hash = (53 * hash) + getUsername().hashCode();
       hash = (37 * hash) + FULL_NAME_FIELD_NUMBER;
       hash = (53 * hash) + getFullName().hashCode();
+      hash = (37 * hash) + AUTH_KEY_FIELD_NUMBER;
+      hash = (53 * hash) + getAuthKey().hashCode();
       hash = (37 * hash) + AUTH_KEY_HASH_FIELD_NUMBER;
       hash = (53 * hash) + getAuthKeyHash().hashCode();
-      hash = (37 * hash) + ENCRYPTED_PRIVATE_KEY_FIELD_NUMBER;
-      hash = (53 * hash) + getEncryptedPrivateKey().hashCode();
+      if (hasEncryptedPrivateKey()) {
+        hash = (37 * hash) + ENCRYPTED_PRIVATE_KEY_FIELD_NUMBER;
+        hash = (53 * hash) + getEncryptedPrivateKey().hashCode();
+      }
       hash = (37 * hash) + PUBLIC_KEY_FIELD_NUMBER;
       hash = (53 * hash) + getPublicKey().hashCode();
       hash = (37 * hash) + KDF_SALT_FIELD_NUMBER;
@@ -439,17 +502,6 @@ public final class Objects {
       return hash;
     }
 
-    public static me.camerongray.teamlocker.client.protobufs.Objects.User parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static me.camerongray.teamlocker.client.protobufs.Objects.User parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
     public static me.camerongray.teamlocker.client.protobufs.Objects.User parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -569,10 +621,16 @@ public final class Objects {
 
         fullName_ = "";
 
+        authKey_ = com.google.protobuf.ByteString.EMPTY;
+
         authKeyHash_ = com.google.protobuf.ByteString.EMPTY;
 
-        encryptedPrivateKey_ = com.google.protobuf.ByteString.EMPTY;
-
+        if (encryptedPrivateKeyBuilder_ == null) {
+          encryptedPrivateKey_ = null;
+        } else {
+          encryptedPrivateKey_ = null;
+          encryptedPrivateKeyBuilder_ = null;
+        }
         publicKey_ = com.google.protobuf.ByteString.EMPTY;
 
         kdfSalt_ = com.google.protobuf.ByteString.EMPTY;
@@ -604,8 +662,13 @@ public final class Objects {
         result.id_ = id_;
         result.username_ = username_;
         result.fullName_ = fullName_;
+        result.authKey_ = authKey_;
         result.authKeyHash_ = authKeyHash_;
-        result.encryptedPrivateKey_ = encryptedPrivateKey_;
+        if (encryptedPrivateKeyBuilder_ == null) {
+          result.encryptedPrivateKey_ = encryptedPrivateKey_;
+        } else {
+          result.encryptedPrivateKey_ = encryptedPrivateKeyBuilder_.build();
+        }
         result.publicKey_ = publicKey_;
         result.kdfSalt_ = kdfSalt_;
         result.isAdmin_ = isAdmin_;
@@ -661,11 +724,14 @@ public final class Objects {
           fullName_ = other.fullName_;
           onChanged();
         }
+        if (other.getAuthKey() != com.google.protobuf.ByteString.EMPTY) {
+          setAuthKey(other.getAuthKey());
+        }
         if (other.getAuthKeyHash() != com.google.protobuf.ByteString.EMPTY) {
           setAuthKeyHash(other.getAuthKeyHash());
         }
-        if (other.getEncryptedPrivateKey() != com.google.protobuf.ByteString.EMPTY) {
-          setEncryptedPrivateKey(other.getEncryptedPrivateKey());
+        if (other.hasEncryptedPrivateKey()) {
+          mergeEncryptedPrivateKey(other.getEncryptedPrivateKey());
         }
         if (other.getPublicKey() != com.google.protobuf.ByteString.EMPTY) {
           setPublicKey(other.getPublicKey());
@@ -704,13 +770,13 @@ public final class Objects {
 
       private int id_ ;
       /**
-       * <code>int32 id = 1;</code>
+       * <code>optional int32 id = 1;</code>
        */
       public int getId() {
         return id_;
       }
       /**
-       * <code>int32 id = 1;</code>
+       * <code>optional int32 id = 1;</code>
        */
       public Builder setId(int value) {
         
@@ -719,7 +785,7 @@ public final class Objects {
         return this;
       }
       /**
-       * <code>int32 id = 1;</code>
+       * <code>optional int32 id = 1;</code>
        */
       public Builder clearId() {
         
@@ -730,7 +796,7 @@ public final class Objects {
 
       private java.lang.Object username_ = "";
       /**
-       * <code>string username = 2;</code>
+       * <code>optional string username = 2;</code>
        */
       public java.lang.String getUsername() {
         java.lang.Object ref = username_;
@@ -745,7 +811,7 @@ public final class Objects {
         }
       }
       /**
-       * <code>string username = 2;</code>
+       * <code>optional string username = 2;</code>
        */
       public com.google.protobuf.ByteString
           getUsernameBytes() {
@@ -761,7 +827,7 @@ public final class Objects {
         }
       }
       /**
-       * <code>string username = 2;</code>
+       * <code>optional string username = 2;</code>
        */
       public Builder setUsername(
           java.lang.String value) {
@@ -774,7 +840,7 @@ public final class Objects {
         return this;
       }
       /**
-       * <code>string username = 2;</code>
+       * <code>optional string username = 2;</code>
        */
       public Builder clearUsername() {
         
@@ -783,7 +849,7 @@ public final class Objects {
         return this;
       }
       /**
-       * <code>string username = 2;</code>
+       * <code>optional string username = 2;</code>
        */
       public Builder setUsernameBytes(
           com.google.protobuf.ByteString value) {
@@ -799,7 +865,7 @@ public final class Objects {
 
       private java.lang.Object fullName_ = "";
       /**
-       * <code>string full_name = 3;</code>
+       * <code>optional string full_name = 3;</code>
        */
       public java.lang.String getFullName() {
         java.lang.Object ref = fullName_;
@@ -814,7 +880,7 @@ public final class Objects {
         }
       }
       /**
-       * <code>string full_name = 3;</code>
+       * <code>optional string full_name = 3;</code>
        */
       public com.google.protobuf.ByteString
           getFullNameBytes() {
@@ -830,7 +896,7 @@ public final class Objects {
         }
       }
       /**
-       * <code>string full_name = 3;</code>
+       * <code>optional string full_name = 3;</code>
        */
       public Builder setFullName(
           java.lang.String value) {
@@ -843,7 +909,7 @@ public final class Objects {
         return this;
       }
       /**
-       * <code>string full_name = 3;</code>
+       * <code>optional string full_name = 3;</code>
        */
       public Builder clearFullName() {
         
@@ -852,7 +918,7 @@ public final class Objects {
         return this;
       }
       /**
-       * <code>string full_name = 3;</code>
+       * <code>optional string full_name = 3;</code>
        */
       public Builder setFullNameBytes(
           com.google.protobuf.ByteString value) {
@@ -866,15 +932,44 @@ public final class Objects {
         return this;
       }
 
+      private com.google.protobuf.ByteString authKey_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>optional bytes auth_key = 4;</code>
+       */
+      public com.google.protobuf.ByteString getAuthKey() {
+        return authKey_;
+      }
+      /**
+       * <code>optional bytes auth_key = 4;</code>
+       */
+      public Builder setAuthKey(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        authKey_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bytes auth_key = 4;</code>
+       */
+      public Builder clearAuthKey() {
+        
+        authKey_ = getDefaultInstance().getAuthKey();
+        onChanged();
+        return this;
+      }
+
       private com.google.protobuf.ByteString authKeyHash_ = com.google.protobuf.ByteString.EMPTY;
       /**
-       * <code>bytes auth_key_hash = 4;</code>
+       * <code>optional bytes auth_key_hash = 5;</code>
        */
       public com.google.protobuf.ByteString getAuthKeyHash() {
         return authKeyHash_;
       }
       /**
-       * <code>bytes auth_key_hash = 4;</code>
+       * <code>optional bytes auth_key_hash = 5;</code>
        */
       public Builder setAuthKeyHash(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -886,7 +981,7 @@ public final class Objects {
         return this;
       }
       /**
-       * <code>bytes auth_key_hash = 4;</code>
+       * <code>optional bytes auth_key_hash = 5;</code>
        */
       public Builder clearAuthKeyHash() {
         
@@ -895,44 +990,132 @@ public final class Objects {
         return this;
       }
 
-      private com.google.protobuf.ByteString encryptedPrivateKey_ = com.google.protobuf.ByteString.EMPTY;
+      private me.camerongray.teamlocker.client.protobufs.Libsodium.LibsodiumItem encryptedPrivateKey_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          me.camerongray.teamlocker.client.protobufs.Libsodium.LibsodiumItem, me.camerongray.teamlocker.client.protobufs.Libsodium.LibsodiumItem.Builder, me.camerongray.teamlocker.client.protobufs.Libsodium.LibsodiumItemOrBuilder> encryptedPrivateKeyBuilder_;
       /**
-       * <code>bytes encrypted_private_key = 5;</code>
+       * <code>optional .LibsodiumItem encrypted_private_key = 6;</code>
        */
-      public com.google.protobuf.ByteString getEncryptedPrivateKey() {
-        return encryptedPrivateKey_;
+      public boolean hasEncryptedPrivateKey() {
+        return encryptedPrivateKeyBuilder_ != null || encryptedPrivateKey_ != null;
       }
       /**
-       * <code>bytes encrypted_private_key = 5;</code>
+       * <code>optional .LibsodiumItem encrypted_private_key = 6;</code>
        */
-      public Builder setEncryptedPrivateKey(com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        encryptedPrivateKey_ = value;
-        onChanged();
+      public me.camerongray.teamlocker.client.protobufs.Libsodium.LibsodiumItem getEncryptedPrivateKey() {
+        if (encryptedPrivateKeyBuilder_ == null) {
+          return encryptedPrivateKey_ == null ? me.camerongray.teamlocker.client.protobufs.Libsodium.LibsodiumItem.getDefaultInstance() : encryptedPrivateKey_;
+        } else {
+          return encryptedPrivateKeyBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .LibsodiumItem encrypted_private_key = 6;</code>
+       */
+      public Builder setEncryptedPrivateKey(me.camerongray.teamlocker.client.protobufs.Libsodium.LibsodiumItem value) {
+        if (encryptedPrivateKeyBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          encryptedPrivateKey_ = value;
+          onChanged();
+        } else {
+          encryptedPrivateKeyBuilder_.setMessage(value);
+        }
+
         return this;
       }
       /**
-       * <code>bytes encrypted_private_key = 5;</code>
+       * <code>optional .LibsodiumItem encrypted_private_key = 6;</code>
+       */
+      public Builder setEncryptedPrivateKey(
+          me.camerongray.teamlocker.client.protobufs.Libsodium.LibsodiumItem.Builder builderForValue) {
+        if (encryptedPrivateKeyBuilder_ == null) {
+          encryptedPrivateKey_ = builderForValue.build();
+          onChanged();
+        } else {
+          encryptedPrivateKeyBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .LibsodiumItem encrypted_private_key = 6;</code>
+       */
+      public Builder mergeEncryptedPrivateKey(me.camerongray.teamlocker.client.protobufs.Libsodium.LibsodiumItem value) {
+        if (encryptedPrivateKeyBuilder_ == null) {
+          if (encryptedPrivateKey_ != null) {
+            encryptedPrivateKey_ =
+              me.camerongray.teamlocker.client.protobufs.Libsodium.LibsodiumItem.newBuilder(encryptedPrivateKey_).mergeFrom(value).buildPartial();
+          } else {
+            encryptedPrivateKey_ = value;
+          }
+          onChanged();
+        } else {
+          encryptedPrivateKeyBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .LibsodiumItem encrypted_private_key = 6;</code>
        */
       public Builder clearEncryptedPrivateKey() {
-        
-        encryptedPrivateKey_ = getDefaultInstance().getEncryptedPrivateKey();
-        onChanged();
+        if (encryptedPrivateKeyBuilder_ == null) {
+          encryptedPrivateKey_ = null;
+          onChanged();
+        } else {
+          encryptedPrivateKey_ = null;
+          encryptedPrivateKeyBuilder_ = null;
+        }
+
         return this;
+      }
+      /**
+       * <code>optional .LibsodiumItem encrypted_private_key = 6;</code>
+       */
+      public me.camerongray.teamlocker.client.protobufs.Libsodium.LibsodiumItem.Builder getEncryptedPrivateKeyBuilder() {
+        
+        onChanged();
+        return getEncryptedPrivateKeyFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .LibsodiumItem encrypted_private_key = 6;</code>
+       */
+      public me.camerongray.teamlocker.client.protobufs.Libsodium.LibsodiumItemOrBuilder getEncryptedPrivateKeyOrBuilder() {
+        if (encryptedPrivateKeyBuilder_ != null) {
+          return encryptedPrivateKeyBuilder_.getMessageOrBuilder();
+        } else {
+          return encryptedPrivateKey_ == null ?
+              me.camerongray.teamlocker.client.protobufs.Libsodium.LibsodiumItem.getDefaultInstance() : encryptedPrivateKey_;
+        }
+      }
+      /**
+       * <code>optional .LibsodiumItem encrypted_private_key = 6;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          me.camerongray.teamlocker.client.protobufs.Libsodium.LibsodiumItem, me.camerongray.teamlocker.client.protobufs.Libsodium.LibsodiumItem.Builder, me.camerongray.teamlocker.client.protobufs.Libsodium.LibsodiumItemOrBuilder> 
+          getEncryptedPrivateKeyFieldBuilder() {
+        if (encryptedPrivateKeyBuilder_ == null) {
+          encryptedPrivateKeyBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              me.camerongray.teamlocker.client.protobufs.Libsodium.LibsodiumItem, me.camerongray.teamlocker.client.protobufs.Libsodium.LibsodiumItem.Builder, me.camerongray.teamlocker.client.protobufs.Libsodium.LibsodiumItemOrBuilder>(
+                  getEncryptedPrivateKey(),
+                  getParentForChildren(),
+                  isClean());
+          encryptedPrivateKey_ = null;
+        }
+        return encryptedPrivateKeyBuilder_;
       }
 
       private com.google.protobuf.ByteString publicKey_ = com.google.protobuf.ByteString.EMPTY;
       /**
-       * <code>bytes public_key = 6;</code>
+       * <code>optional bytes public_key = 7;</code>
        */
       public com.google.protobuf.ByteString getPublicKey() {
         return publicKey_;
       }
       /**
-       * <code>bytes public_key = 6;</code>
+       * <code>optional bytes public_key = 7;</code>
        */
       public Builder setPublicKey(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -944,7 +1127,7 @@ public final class Objects {
         return this;
       }
       /**
-       * <code>bytes public_key = 6;</code>
+       * <code>optional bytes public_key = 7;</code>
        */
       public Builder clearPublicKey() {
         
@@ -955,13 +1138,13 @@ public final class Objects {
 
       private com.google.protobuf.ByteString kdfSalt_ = com.google.protobuf.ByteString.EMPTY;
       /**
-       * <code>bytes kdf_salt = 7;</code>
+       * <code>optional bytes kdf_salt = 8;</code>
        */
       public com.google.protobuf.ByteString getKdfSalt() {
         return kdfSalt_;
       }
       /**
-       * <code>bytes kdf_salt = 7;</code>
+       * <code>optional bytes kdf_salt = 8;</code>
        */
       public Builder setKdfSalt(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -973,7 +1156,7 @@ public final class Objects {
         return this;
       }
       /**
-       * <code>bytes kdf_salt = 7;</code>
+       * <code>optional bytes kdf_salt = 8;</code>
        */
       public Builder clearKdfSalt() {
         
@@ -984,13 +1167,13 @@ public final class Objects {
 
       private boolean isAdmin_ ;
       /**
-       * <code>bool is_admin = 8;</code>
+       * <code>optional bool is_admin = 9;</code>
        */
       public boolean getIsAdmin() {
         return isAdmin_;
       }
       /**
-       * <code>bool is_admin = 8;</code>
+       * <code>optional bool is_admin = 9;</code>
        */
       public Builder setIsAdmin(boolean value) {
         
@@ -999,7 +1182,7 @@ public final class Objects {
         return this;
       }
       /**
-       * <code>bool is_admin = 8;</code>
+       * <code>optional bool is_admin = 9;</code>
        */
       public Builder clearIsAdmin() {
         
@@ -1070,13 +1253,14 @@ public final class Objects {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\027protobufs/Objects.proto\"\245\001\n\004User\022\n\n\002id" +
-      "\030\001 \001(\005\022\020\n\010username\030\002 \001(\t\022\021\n\tfull_name\030\003 " +
-      "\001(\t\022\025\n\rauth_key_hash\030\004 \001(\014\022\035\n\025encrypted_" +
-      "private_key\030\005 \001(\014\022\022\n\npublic_key\030\006 \001(\014\022\020\n" +
-      "\010kdf_salt\030\007 \001(\014\022\020\n\010is_admin\030\010 \001(\010B,\n*me." +
-      "camerongray.teamlocker.client.protobufsb" +
-      "\006proto3"
+      "\n\027protobufs/Objects.proto\032\031protobufs/Lib" +
+      "sodium.proto\"\307\001\n\004User\022\n\n\002id\030\001 \001(\005\022\020\n\010use" +
+      "rname\030\002 \001(\t\022\021\n\tfull_name\030\003 \001(\t\022\020\n\010auth_k" +
+      "ey\030\004 \001(\014\022\025\n\rauth_key_hash\030\005 \001(\014\022-\n\025encry" +
+      "pted_private_key\030\006 \001(\0132\016.LibsodiumItem\022\022" +
+      "\n\npublic_key\030\007 \001(\014\022\020\n\010kdf_salt\030\010 \001(\014\022\020\n\010" +
+      "is_admin\030\t \001(\010B,\n*me.camerongray.teamloc" +
+      "ker.client.protobufsb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -1089,13 +1273,15 @@ public final class Objects {
     com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
+          me.camerongray.teamlocker.client.protobufs.Libsodium.getDescriptor(),
         }, assigner);
     internal_static_User_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_User_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_User_descriptor,
-        new java.lang.String[] { "Id", "Username", "FullName", "AuthKeyHash", "EncryptedPrivateKey", "PublicKey", "KdfSalt", "IsAdmin", });
+        new java.lang.String[] { "Id", "Username", "FullName", "AuthKey", "AuthKeyHash", "EncryptedPrivateKey", "PublicKey", "KdfSalt", "IsAdmin", });
+    me.camerongray.teamlocker.client.protobufs.Libsodium.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

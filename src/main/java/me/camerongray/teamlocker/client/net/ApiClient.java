@@ -65,6 +65,20 @@ public class ApiClient {
         return response;
     }
 
+    public ApiResponse makePutRequest(String path, byte[] body) throws NetworkException, IOException {
+        HttpResponse<InputStream> binaryResponse;
+        try {
+            binaryResponse = Unirest.put(getUrl(path)).basicAuth(username,
+                    Base64.getEncoder().encodeToString(authKey)).body(body).asBinary();
+        } catch (UnirestException ex) {
+            throw new NetworkException(ex.getCause().getMessage(), ex);
+        }
+
+        ApiResponse response = new ApiResponse(IOUtils.toByteArray(binaryResponse.getBody()),
+                binaryResponse.getStatus());
+        return response;
+    }
+
     public ApiResponse makeValidatedGetRequest(String path) throws IOException, NetworkException, ServerProvidedException {
         ApiResponse response = this.makeGetRequest(path);
         if (response.getResponseCode() == 200) {

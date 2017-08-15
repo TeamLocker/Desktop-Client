@@ -19,22 +19,22 @@ public final class Libsodium {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>bytes data = 1;</code>
+     * <code>optional bytes data = 1;</code>
      */
     com.google.protobuf.ByteString getData();
 
     /**
-     * <code>bytes nonce = 2;</code>
+     * <code>optional bytes nonce = 2;</code>
      */
     com.google.protobuf.ByteString getNonce();
 
     /**
-     * <code>int64 ops_limit = 3;</code>
+     * <code>optional int64 ops_limit = 3;</code>
      */
     long getOpsLimit();
 
     /**
-     * <code>int64 mem_limit = 4;</code>
+     * <code>optional int64 mem_limit = 4;</code>
      */
     long getMemLimit();
   }
@@ -127,7 +127,7 @@ public final class Libsodium {
     public static final int DATA_FIELD_NUMBER = 1;
     private com.google.protobuf.ByteString data_;
     /**
-     * <code>bytes data = 1;</code>
+     * <code>optional bytes data = 1;</code>
      */
     public com.google.protobuf.ByteString getData() {
       return data_;
@@ -136,7 +136,7 @@ public final class Libsodium {
     public static final int NONCE_FIELD_NUMBER = 2;
     private com.google.protobuf.ByteString nonce_;
     /**
-     * <code>bytes nonce = 2;</code>
+     * <code>optional bytes nonce = 2;</code>
      */
     public com.google.protobuf.ByteString getNonce() {
       return nonce_;
@@ -145,7 +145,7 @@ public final class Libsodium {
     public static final int OPS_LIMIT_FIELD_NUMBER = 3;
     private long opsLimit_;
     /**
-     * <code>int64 ops_limit = 3;</code>
+     * <code>optional int64 ops_limit = 3;</code>
      */
     public long getOpsLimit() {
       return opsLimit_;
@@ -154,7 +154,7 @@ public final class Libsodium {
     public static final int MEM_LIMIT_FIELD_NUMBER = 4;
     private long memLimit_;
     /**
-     * <code>int64 mem_limit = 4;</code>
+     * <code>optional int64 mem_limit = 4;</code>
      */
     public long getMemLimit() {
       return memLimit_;
@@ -240,7 +240,7 @@ public final class Libsodium {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + DATA_FIELD_NUMBER;
       hash = (53 * hash) + getData().hashCode();
       hash = (37 * hash) + NONCE_FIELD_NUMBER;
@@ -256,17 +256,6 @@ public final class Libsodium {
       return hash;
     }
 
-    public static me.camerongray.teamlocker.client.protobufs.Libsodium.LibsodiumItem parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static me.camerongray.teamlocker.client.protobufs.Libsodium.LibsodiumItem parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
     public static me.camerongray.teamlocker.client.protobufs.Libsodium.LibsodiumItem parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -495,13 +484,13 @@ public final class Libsodium {
 
       private com.google.protobuf.ByteString data_ = com.google.protobuf.ByteString.EMPTY;
       /**
-       * <code>bytes data = 1;</code>
+       * <code>optional bytes data = 1;</code>
        */
       public com.google.protobuf.ByteString getData() {
         return data_;
       }
       /**
-       * <code>bytes data = 1;</code>
+       * <code>optional bytes data = 1;</code>
        */
       public Builder setData(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -513,7 +502,7 @@ public final class Libsodium {
         return this;
       }
       /**
-       * <code>bytes data = 1;</code>
+       * <code>optional bytes data = 1;</code>
        */
       public Builder clearData() {
         
@@ -524,13 +513,13 @@ public final class Libsodium {
 
       private com.google.protobuf.ByteString nonce_ = com.google.protobuf.ByteString.EMPTY;
       /**
-       * <code>bytes nonce = 2;</code>
+       * <code>optional bytes nonce = 2;</code>
        */
       public com.google.protobuf.ByteString getNonce() {
         return nonce_;
       }
       /**
-       * <code>bytes nonce = 2;</code>
+       * <code>optional bytes nonce = 2;</code>
        */
       public Builder setNonce(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -542,7 +531,7 @@ public final class Libsodium {
         return this;
       }
       /**
-       * <code>bytes nonce = 2;</code>
+       * <code>optional bytes nonce = 2;</code>
        */
       public Builder clearNonce() {
         
@@ -553,13 +542,13 @@ public final class Libsodium {
 
       private long opsLimit_ ;
       /**
-       * <code>int64 ops_limit = 3;</code>
+       * <code>optional int64 ops_limit = 3;</code>
        */
       public long getOpsLimit() {
         return opsLimit_;
       }
       /**
-       * <code>int64 ops_limit = 3;</code>
+       * <code>optional int64 ops_limit = 3;</code>
        */
       public Builder setOpsLimit(long value) {
         
@@ -568,7 +557,7 @@ public final class Libsodium {
         return this;
       }
       /**
-       * <code>int64 ops_limit = 3;</code>
+       * <code>optional int64 ops_limit = 3;</code>
        */
       public Builder clearOpsLimit() {
         
@@ -579,13 +568,13 @@ public final class Libsodium {
 
       private long memLimit_ ;
       /**
-       * <code>int64 mem_limit = 4;</code>
+       * <code>optional int64 mem_limit = 4;</code>
        */
       public long getMemLimit() {
         return memLimit_;
       }
       /**
-       * <code>int64 mem_limit = 4;</code>
+       * <code>optional int64 mem_limit = 4;</code>
        */
       public Builder setMemLimit(long value) {
         
@@ -594,7 +583,7 @@ public final class Libsodium {
         return this;
       }
       /**
-       * <code>int64 mem_limit = 4;</code>
+       * <code>optional int64 mem_limit = 4;</code>
        */
       public Builder clearMemLimit() {
         

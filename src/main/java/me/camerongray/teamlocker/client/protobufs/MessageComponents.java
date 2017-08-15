@@ -19,16 +19,16 @@ public final class MessageComponents {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>bool success = 1;</code>
+     * <code>optional bool success = 1;</code>
      */
     boolean getSuccess();
 
     /**
-     * <code>string message = 2;</code>
+     * <code>optional string message = 2;</code>
      */
     java.lang.String getMessage();
     /**
-     * <code>string message = 2;</code>
+     * <code>optional string message = 2;</code>
      */
     com.google.protobuf.ByteString
         getMessageBytes();
@@ -111,7 +111,7 @@ public final class MessageComponents {
     public static final int SUCCESS_FIELD_NUMBER = 1;
     private boolean success_;
     /**
-     * <code>bool success = 1;</code>
+     * <code>optional bool success = 1;</code>
      */
     public boolean getSuccess() {
       return success_;
@@ -120,7 +120,7 @@ public final class MessageComponents {
     public static final int MESSAGE_FIELD_NUMBER = 2;
     private volatile java.lang.Object message_;
     /**
-     * <code>string message = 2;</code>
+     * <code>optional string message = 2;</code>
      */
     public java.lang.String getMessage() {
       java.lang.Object ref = message_;
@@ -135,7 +135,7 @@ public final class MessageComponents {
       }
     }
     /**
-     * <code>string message = 2;</code>
+     * <code>optional string message = 2;</code>
      */
     public com.google.protobuf.ByteString
         getMessageBytes() {
@@ -212,7 +212,7 @@ public final class MessageComponents {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + SUCCESS_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
           getSuccess());
@@ -223,17 +223,6 @@ public final class MessageComponents {
       return hash;
     }
 
-    public static me.camerongray.teamlocker.client.protobufs.MessageComponents.OperationResult parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static me.camerongray.teamlocker.client.protobufs.MessageComponents.OperationResult parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
     public static me.camerongray.teamlocker.client.protobufs.MessageComponents.OperationResult parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -451,13 +440,13 @@ public final class MessageComponents {
 
       private boolean success_ ;
       /**
-       * <code>bool success = 1;</code>
+       * <code>optional bool success = 1;</code>
        */
       public boolean getSuccess() {
         return success_;
       }
       /**
-       * <code>bool success = 1;</code>
+       * <code>optional bool success = 1;</code>
        */
       public Builder setSuccess(boolean value) {
         
@@ -466,7 +455,7 @@ public final class MessageComponents {
         return this;
       }
       /**
-       * <code>bool success = 1;</code>
+       * <code>optional bool success = 1;</code>
        */
       public Builder clearSuccess() {
         
@@ -477,7 +466,7 @@ public final class MessageComponents {
 
       private java.lang.Object message_ = "";
       /**
-       * <code>string message = 2;</code>
+       * <code>optional string message = 2;</code>
        */
       public java.lang.String getMessage() {
         java.lang.Object ref = message_;
@@ -492,7 +481,7 @@ public final class MessageComponents {
         }
       }
       /**
-       * <code>string message = 2;</code>
+       * <code>optional string message = 2;</code>
        */
       public com.google.protobuf.ByteString
           getMessageBytes() {
@@ -508,7 +497,7 @@ public final class MessageComponents {
         }
       }
       /**
-       * <code>string message = 2;</code>
+       * <code>optional string message = 2;</code>
        */
       public Builder setMessage(
           java.lang.String value) {
@@ -521,7 +510,7 @@ public final class MessageComponents {
         return this;
       }
       /**
-       * <code>string message = 2;</code>
+       * <code>optional string message = 2;</code>
        */
       public Builder clearMessage() {
         
@@ -530,7 +519,7 @@ public final class MessageComponents {
         return this;
       }
       /**
-       * <code>string message = 2;</code>
+       * <code>optional string message = 2;</code>
        */
       public Builder setMessageBytes(
           com.google.protobuf.ByteString value) {

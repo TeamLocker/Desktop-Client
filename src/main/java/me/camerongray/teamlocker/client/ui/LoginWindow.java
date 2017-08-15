@@ -92,10 +92,12 @@ public class LoginWindow implements Initializable {
             @Override
             public void run() {
                 User user = task.getValue();
-                MainWindow controller = new MainWindow(user);
-                UIHelpers.createStage(getClass().getResource("MainWindow.fxml"), controller, "TeamLocker", 640,
-                        480, false).show();
-                UIHelpers.closeStage(event);
+                if (user != null) {
+                    MainWindow controller = new MainWindow(user);
+                    UIHelpers.createStage(getClass().getResource("MainWindow.fxml"), controller, "TeamLocker", 1024,
+                            600, false).show();
+                    UIHelpers.closeStage(event);
+                }
             }
         });
 

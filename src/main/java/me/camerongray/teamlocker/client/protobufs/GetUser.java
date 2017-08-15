@@ -19,28 +19,28 @@ public final class GetUser {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>.OperationResult result = 1;</code>
+     * <code>optional .OperationResult result = 1;</code>
      */
     boolean hasResult();
     /**
-     * <code>.OperationResult result = 1;</code>
+     * <code>optional .OperationResult result = 1;</code>
      */
     me.camerongray.teamlocker.client.protobufs.MessageComponents.OperationResult getResult();
     /**
-     * <code>.OperationResult result = 1;</code>
+     * <code>optional .OperationResult result = 1;</code>
      */
     me.camerongray.teamlocker.client.protobufs.MessageComponents.OperationResultOrBuilder getResultOrBuilder();
 
     /**
-     * <code>.User user = 2;</code>
+     * <code>optional .User user = 2;</code>
      */
     boolean hasUser();
     /**
-     * <code>.User user = 2;</code>
+     * <code>optional .User user = 2;</code>
      */
     me.camerongray.teamlocker.client.protobufs.Objects.User getUser();
     /**
-     * <code>.User user = 2;</code>
+     * <code>optional .User user = 2;</code>
      */
     me.camerongray.teamlocker.client.protobufs.Objects.UserOrBuilder getUserOrBuilder();
   }
@@ -135,19 +135,19 @@ public final class GetUser {
     public static final int RESULT_FIELD_NUMBER = 1;
     private me.camerongray.teamlocker.client.protobufs.MessageComponents.OperationResult result_;
     /**
-     * <code>.OperationResult result = 1;</code>
+     * <code>optional .OperationResult result = 1;</code>
      */
     public boolean hasResult() {
       return result_ != null;
     }
     /**
-     * <code>.OperationResult result = 1;</code>
+     * <code>optional .OperationResult result = 1;</code>
      */
     public me.camerongray.teamlocker.client.protobufs.MessageComponents.OperationResult getResult() {
       return result_ == null ? me.camerongray.teamlocker.client.protobufs.MessageComponents.OperationResult.getDefaultInstance() : result_;
     }
     /**
-     * <code>.OperationResult result = 1;</code>
+     * <code>optional .OperationResult result = 1;</code>
      */
     public me.camerongray.teamlocker.client.protobufs.MessageComponents.OperationResultOrBuilder getResultOrBuilder() {
       return getResult();
@@ -156,19 +156,19 @@ public final class GetUser {
     public static final int USER_FIELD_NUMBER = 2;
     private me.camerongray.teamlocker.client.protobufs.Objects.User user_;
     /**
-     * <code>.User user = 2;</code>
+     * <code>optional .User user = 2;</code>
      */
     public boolean hasUser() {
       return user_ != null;
     }
     /**
-     * <code>.User user = 2;</code>
+     * <code>optional .User user = 2;</code>
      */
     public me.camerongray.teamlocker.client.protobufs.Objects.User getUser() {
       return user_ == null ? me.camerongray.teamlocker.client.protobufs.Objects.User.getDefaultInstance() : user_;
     }
     /**
-     * <code>.User user = 2;</code>
+     * <code>optional .User user = 2;</code>
      */
     public me.camerongray.teamlocker.client.protobufs.Objects.UserOrBuilder getUserOrBuilder() {
       return getUser();
@@ -242,7 +242,7 @@ public final class GetUser {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       if (hasResult()) {
         hash = (37 * hash) + RESULT_FIELD_NUMBER;
         hash = (53 * hash) + getResult().hashCode();
@@ -256,17 +256,6 @@ public final class GetUser {
       return hash;
     }
 
-    public static me.camerongray.teamlocker.client.protobufs.GetUser.GetUserResponse parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static me.camerongray.teamlocker.client.protobufs.GetUser.GetUserResponse parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
     public static me.camerongray.teamlocker.client.protobufs.GetUser.GetUserResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -501,13 +490,13 @@ public final class GetUser {
       private com.google.protobuf.SingleFieldBuilderV3<
           me.camerongray.teamlocker.client.protobufs.MessageComponents.OperationResult, me.camerongray.teamlocker.client.protobufs.MessageComponents.OperationResult.Builder, me.camerongray.teamlocker.client.protobufs.MessageComponents.OperationResultOrBuilder> resultBuilder_;
       /**
-       * <code>.OperationResult result = 1;</code>
+       * <code>optional .OperationResult result = 1;</code>
        */
       public boolean hasResult() {
         return resultBuilder_ != null || result_ != null;
       }
       /**
-       * <code>.OperationResult result = 1;</code>
+       * <code>optional .OperationResult result = 1;</code>
        */
       public me.camerongray.teamlocker.client.protobufs.MessageComponents.OperationResult getResult() {
         if (resultBuilder_ == null) {
@@ -517,7 +506,7 @@ public final class GetUser {
         }
       }
       /**
-       * <code>.OperationResult result = 1;</code>
+       * <code>optional .OperationResult result = 1;</code>
        */
       public Builder setResult(me.camerongray.teamlocker.client.protobufs.MessageComponents.OperationResult value) {
         if (resultBuilder_ == null) {
@@ -533,7 +522,7 @@ public final class GetUser {
         return this;
       }
       /**
-       * <code>.OperationResult result = 1;</code>
+       * <code>optional .OperationResult result = 1;</code>
        */
       public Builder setResult(
           me.camerongray.teamlocker.client.protobufs.MessageComponents.OperationResult.Builder builderForValue) {
@@ -547,7 +536,7 @@ public final class GetUser {
         return this;
       }
       /**
-       * <code>.OperationResult result = 1;</code>
+       * <code>optional .OperationResult result = 1;</code>
        */
       public Builder mergeResult(me.camerongray.teamlocker.client.protobufs.MessageComponents.OperationResult value) {
         if (resultBuilder_ == null) {
@@ -565,7 +554,7 @@ public final class GetUser {
         return this;
       }
       /**
-       * <code>.OperationResult result = 1;</code>
+       * <code>optional .OperationResult result = 1;</code>
        */
       public Builder clearResult() {
         if (resultBuilder_ == null) {
@@ -579,7 +568,7 @@ public final class GetUser {
         return this;
       }
       /**
-       * <code>.OperationResult result = 1;</code>
+       * <code>optional .OperationResult result = 1;</code>
        */
       public me.camerongray.teamlocker.client.protobufs.MessageComponents.OperationResult.Builder getResultBuilder() {
         
@@ -587,7 +576,7 @@ public final class GetUser {
         return getResultFieldBuilder().getBuilder();
       }
       /**
-       * <code>.OperationResult result = 1;</code>
+       * <code>optional .OperationResult result = 1;</code>
        */
       public me.camerongray.teamlocker.client.protobufs.MessageComponents.OperationResultOrBuilder getResultOrBuilder() {
         if (resultBuilder_ != null) {
@@ -598,7 +587,7 @@ public final class GetUser {
         }
       }
       /**
-       * <code>.OperationResult result = 1;</code>
+       * <code>optional .OperationResult result = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           me.camerongray.teamlocker.client.protobufs.MessageComponents.OperationResult, me.camerongray.teamlocker.client.protobufs.MessageComponents.OperationResult.Builder, me.camerongray.teamlocker.client.protobufs.MessageComponents.OperationResultOrBuilder> 
@@ -618,13 +607,13 @@ public final class GetUser {
       private com.google.protobuf.SingleFieldBuilderV3<
           me.camerongray.teamlocker.client.protobufs.Objects.User, me.camerongray.teamlocker.client.protobufs.Objects.User.Builder, me.camerongray.teamlocker.client.protobufs.Objects.UserOrBuilder> userBuilder_;
       /**
-       * <code>.User user = 2;</code>
+       * <code>optional .User user = 2;</code>
        */
       public boolean hasUser() {
         return userBuilder_ != null || user_ != null;
       }
       /**
-       * <code>.User user = 2;</code>
+       * <code>optional .User user = 2;</code>
        */
       public me.camerongray.teamlocker.client.protobufs.Objects.User getUser() {
         if (userBuilder_ == null) {
@@ -634,7 +623,7 @@ public final class GetUser {
         }
       }
       /**
-       * <code>.User user = 2;</code>
+       * <code>optional .User user = 2;</code>
        */
       public Builder setUser(me.camerongray.teamlocker.client.protobufs.Objects.User value) {
         if (userBuilder_ == null) {
@@ -650,7 +639,7 @@ public final class GetUser {
         return this;
       }
       /**
-       * <code>.User user = 2;</code>
+       * <code>optional .User user = 2;</code>
        */
       public Builder setUser(
           me.camerongray.teamlocker.client.protobufs.Objects.User.Builder builderForValue) {
@@ -664,7 +653,7 @@ public final class GetUser {
         return this;
       }
       /**
-       * <code>.User user = 2;</code>
+       * <code>optional .User user = 2;</code>
        */
       public Builder mergeUser(me.camerongray.teamlocker.client.protobufs.Objects.User value) {
         if (userBuilder_ == null) {
@@ -682,7 +671,7 @@ public final class GetUser {
         return this;
       }
       /**
-       * <code>.User user = 2;</code>
+       * <code>optional .User user = 2;</code>
        */
       public Builder clearUser() {
         if (userBuilder_ == null) {
@@ -696,7 +685,7 @@ public final class GetUser {
         return this;
       }
       /**
-       * <code>.User user = 2;</code>
+       * <code>optional .User user = 2;</code>
        */
       public me.camerongray.teamlocker.client.protobufs.Objects.User.Builder getUserBuilder() {
         
@@ -704,7 +693,7 @@ public final class GetUser {
         return getUserFieldBuilder().getBuilder();
       }
       /**
-       * <code>.User user = 2;</code>
+       * <code>optional .User user = 2;</code>
        */
       public me.camerongray.teamlocker.client.protobufs.Objects.UserOrBuilder getUserOrBuilder() {
         if (userBuilder_ != null) {
@@ -715,7 +704,7 @@ public final class GetUser {
         }
       }
       /**
-       * <code>.User user = 2;</code>
+       * <code>optional .User user = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           me.camerongray.teamlocker.client.protobufs.Objects.User, me.camerongray.teamlocker.client.protobufs.Objects.User.Builder, me.camerongray.teamlocker.client.protobufs.Objects.UserOrBuilder> 

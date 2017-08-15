@@ -6,7 +6,9 @@ import me.camerongray.teamlocker.client.net.ApiClient;
 import me.camerongray.teamlocker.client.net.ApiResponse;
 import me.camerongray.teamlocker.client.net.NetworkException;
 import me.camerongray.teamlocker.client.net.ServerProvidedException;
+import me.camerongray.teamlocker.client.protobufs.AddUser;
 import me.camerongray.teamlocker.client.protobufs.GetUser;
+import me.camerongray.teamlocker.client.protobufs.Libsodium;
 import me.camerongray.teamlocker.client.protobufs.Objects;
 
 import java.io.IOException;
@@ -18,38 +20,48 @@ public class User {
     private int id;
     private String username;
     private String fullName;
-    private byte[] authKeyHash;
+    private byte[] authKey;
     private byte[] encryptedPrivateKey;
     private byte[] publicKey;
     private byte[] kdfSalt;
     private boolean isAdmin;
+    private byte[] encryptedPrivateKeyNonce;
+    private long encryptedPrivateKeyOpsLimit;
+    private long encryptedPrivateKeyMemLimit;
 
     // TODO: Update below to reflect new user structure and libsodium item packing!
     public static User createNew(String username, String fullName, String password, boolean isAdmin) {
-//        UserCrypto cryptoAttributes = UserCrypto.generateNewCryptoAttributes(password);
-//
-//        User user = new User();
-//        user.username = username;
-//        user.fullName = fullName;
-//        user.authKey = cryptoAttributes.getAuthKey();
-//        user.encryptedPrivateKey = cryptoAttributes.getEncryptedPrivateKey();
-//        user.encryptedPrivateKeyNonce = cryptoAttributes.getEncryptedPrivateKeyNonce();
-//        user.encryptedPrivateKeyOpsLimit = cryptoAttributes.getEncryptedPrivateKeyOpsLimit();
-//        user.encryptedPrivateKeyMemLimit = cryptoAttributes.getEncryptedPrivateKeyMemLimit();
-//        user.publicKey = cryptoAttributes.getPublicKey();
-//        user.salt = cryptoAttributes.getSalt();
-//        user.isAdmin = isAdmin;
-//
-//        return user;
-        return null;
+        UserCrypto cryptoAttributes = UserCrypto.generateNewCryptoAttributes(password);
+
+        User user = new User();
+        user.username = username;
+        user.fullName = fullName;
+        user.authKey = new byte[0];
+        user.authKey = cryptoAttributes.getAuthKey();
+        user.encryptedPrivateKey = cryptoAttributes.getEncryptedPrivateKey();
+        user.encryptedPrivateKeyNonce = cryptoAttributes.getEncryptedPrivateKeyNonce();
+        user.encryptedPrivateKeyOpsLimit = cryptoAttributes.getEncryptedPrivateKeyOpsLimit();
+        user.encryptedPrivateKeyMemLimit = cryptoAttributes.getEncryptedPrivateKeyMemLimit();
+        user.publicKey = cryptoAttributes.getPublicKey();
+        user.kdfSalt = cryptoAttributes.getKdfSalt();
+        user.isAdmin = isAdmin;
+
+        return user;
     }
 
     private Objects.User getProtobuf() {
         Objects.User.Builder builder = Objects.User.newBuilder();
         builder.setUsername(username);
         builder.setFullName(fullName);
-        builder.setAuthKeyHash(ByteString.copyFrom(authKeyHash));
-        builder.setEncryptedPrivateKey(ByteString.copyFrom(encryptedPrivateKey));
+        builder.setAuthKey(ByteString.copyFrom(authKey));
+
+        Libsodium.LibsodiumItem.Builder privateKeyBuilder = Libsodium.LibsodiumItem.newBuilder();
+        privateKeyBuilder.setData(ByteString.copyFrom(encryptedPrivateKey));
+        privateKeyBuilder.setNonce(ByteString.copyFrom(encryptedPrivateKeyNonce));
+        privateKeyBuilder.setMemLimit(encryptedPrivateKeyMemLimit);
+        privateKeyBuilder.setOpsLimit(encryptedPrivateKeyOpsLimit);
+
+        builder.setEncryptedPrivateKey(privateKeyBuilder);
         builder.setPublicKey(ByteString.copyFrom(publicKey));
         builder.setKdfSalt(ByteString.copyFrom(kdfSalt));
         builder.setIsAdmin(isAdmin);
@@ -66,7 +78,7 @@ public class User {
     }
 
     private static User getFromServer(String id) throws IOException, NetworkException, ServerProvidedException {
-        ApiResponse response = ApiClient.getInstance().makeValidatedGetRequest("/users/" + id);
+        ApiResponse response = ApiClient.getInstance().makeValidatedGetRequest("/users/" + id + "/");
 
         Objects.User protobuf = GetUser.GetUserResponse.parseFrom(response.getBody()).getUser();
         User user = fromProtobuf(protobuf);
@@ -79,8 +91,11 @@ public class User {
         user.id = protobuf.getId();
         user.username = protobuf.getUsername();
         user.fullName = protobuf.getFullName();
-        user.authKeyHash = protobuf.getAuthKeyHash().toByteArray();
-        user.encryptedPrivateKey = protobuf.getEncryptedPrivateKey().toByteArray();
+        user.authKey = protobuf.getAuthKey().toByteArray();
+        user.encryptedPrivateKey = protobuf.getEncryptedPrivateKey().getData().toByteArray();
+        user.encryptedPrivateKeyNonce = protobuf.getEncryptedPrivateKey().getNonce().toByteArray();
+        user.encryptedPrivateKeyMemLimit = protobuf.getEncryptedPrivateKey().getMemLimit();
+        user.encryptedPrivateKeyOpsLimit = protobuf.getEncryptedPrivateKey().getOpsLimit();
         user.publicKey = protobuf.getPublicKey().toByteArray();
         user.kdfSalt = protobuf.getKdfSalt().toByteArray();
         user.isAdmin = protobuf.getIsAdmin();
@@ -88,9 +103,16 @@ public class User {
         return user;
     }
 
-    public void addToServer() {
-        Objects.User protobuf = getProtobuf();
-        System.out.println(protobuf.toString());
+    public void addToServer() throws IOException, NetworkException, ServerProvidedException {
+        AddUser.AddUserRequest.Builder protobuf = AddUser.AddUserRequest.newBuilder();
+        protobuf.setUser(getProtobuf());
+        ApiResponse apiResponse = ApiClient.getInstance().makePutRequest("/users/",
+                protobuf.build().toByteString().toByteArray());
+
+        if (apiResponse.getResponseCode() != 200) {
+            AddUser.AddUserResponse response = AddUser.AddUserResponse.parseFrom(apiResponse.getBody());
+            throw new ServerProvidedException(response.getResult().getMessage());
+        }
     }
 
     public int getId() {
@@ -105,8 +127,8 @@ public class User {
         return fullName;
     }
 
-    public byte[] getAuthKeyHash() {
-        return authKeyHash;
+    public byte[] getAuthKey() {
+        return authKey;
     }
 
     public byte[] getEncryptedPrivateKey() {
