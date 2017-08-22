@@ -35,7 +35,7 @@ public class User {
         UserCrypto cryptoAttributes = UserCrypto.generateNewCryptoAttributes(password, username);
 
         User user = new User();
-        user.username = username;t2 
+        user.username = username;
         user.fullName = fullName;
         user.authKey = new byte[0];
         user.authKey = cryptoAttributes.getAuthKey();
@@ -46,8 +46,6 @@ public class User {
         user.publicKey = cryptoAttributes.getPublicKey();
         user.kdfSalt = cryptoAttributes.getKdfSalt();
         user.isAdmin = isAdmin;
-
-        System.out.println(new String(Base64.getEncoder().encode(user.authKey)));
 
         return user;
     }

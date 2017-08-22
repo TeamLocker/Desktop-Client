@@ -34,7 +34,6 @@ public class ApiClient {
         instance.port = port;
         instance.username = username;
         instance.authKey = CryptoHelpers.hashPassword(password, username);
-        System.out.println(new String(Base64.getEncoder().encode(instance.authKey)));
 
         // Check authentication here?
         ApiResponse response = instance.makeGetRequest("ping");

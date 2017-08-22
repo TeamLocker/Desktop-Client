@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import me.camerongray.teamlocker.client.net.ServerProvidedException;
 import me.camerongray.teamlocker.client.utils.UIHelpers;
 
 import java.util.concurrent.Callable;
@@ -38,7 +39,12 @@ public class SpinnerTask<T> extends Task<T> {
         @Override
         public void handle(WorkerStateEvent event) {
             SpinnerTask.this.hide();
-            UncaughtExceptionHandler.showDialog(SpinnerTask.this.getException());
+            Throwable exception = SpinnerTask.this.getException();
+            if (exception.getClass().equals(ServerProvidedException.class)) {
+                UIHelpers.showErrorDialog("An error occurred...", exception.getMessage());
+            } else {
+                UncaughtExceptionHandler.showDialog(exception);
+            }
         }
     };
 

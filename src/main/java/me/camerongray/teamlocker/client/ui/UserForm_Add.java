@@ -43,11 +43,7 @@ public class UserForm_Add extends UserForm {
 
                 updateMessage("Adding to server...");
 
-                try {
-                    user.addToServer();
-                } catch (ServerProvidedException ex) {
-                    UIHelpers.showErrorDialog("Add User", ex.getMessage());
-                }
+                user.addToServer();
 
                 return null;
             }
