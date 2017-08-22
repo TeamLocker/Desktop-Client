@@ -26,7 +26,7 @@ public class UserCrypto {
         this.kdfSalt = kdfSalt;
     }
 
-    public static UserCrypto generateNewCryptoAttributes(String password) {
+    public static UserCrypto generateNewCryptoAttributes(String password, String username) {
         KeyPair keyPair = CryptoHelpers.generateKeyPair();
 
         byte[] salt = CryptoHelpers.generateSalt();
@@ -36,7 +36,7 @@ public class UserCrypto {
         byte[] encryptedPrivateKey = CryptoHelpers.encryptWithSecret(keyPair.getPrivateKey().toBytes(), passwordKey,
                 encryptedPrivateKeyNonce);
 
-        byte[] authKey = CryptoHelpers.hashPassword(password);
+        byte[] authKey = CryptoHelpers.hashPassword(password, username);
 
         return new UserCrypto(authKey, encryptedPrivateKey, encryptedPrivateKeyNonce, CryptoHelpers.getOpsLimit(),
                 CryptoHelpers.getMemLimit(), keyPair.getPublicKey().toBytes(), salt);

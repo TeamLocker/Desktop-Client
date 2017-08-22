@@ -12,6 +12,7 @@ import me.camerongray.teamlocker.client.protobufs.Libsodium;
 import me.camerongray.teamlocker.client.protobufs.Objects;
 
 import java.io.IOException;
+import java.util.Base64;
 
 /**
  * Created by camerong on 23/05/17.
@@ -31,10 +32,10 @@ public class User {
 
     // TODO: Update below to reflect new user structure and libsodium item packing!
     public static User createNew(String username, String fullName, String password, boolean isAdmin) {
-        UserCrypto cryptoAttributes = UserCrypto.generateNewCryptoAttributes(password);
+        UserCrypto cryptoAttributes = UserCrypto.generateNewCryptoAttributes(password, username);
 
         User user = new User();
-        user.username = username;
+        user.username = username;t2 
         user.fullName = fullName;
         user.authKey = new byte[0];
         user.authKey = cryptoAttributes.getAuthKey();
@@ -45,6 +46,8 @@ public class User {
         user.publicKey = cryptoAttributes.getPublicKey();
         user.kdfSalt = cryptoAttributes.getKdfSalt();
         user.isAdmin = isAdmin;
+
+        System.out.println(new String(Base64.getEncoder().encode(user.authKey)));
 
         return user;
     }

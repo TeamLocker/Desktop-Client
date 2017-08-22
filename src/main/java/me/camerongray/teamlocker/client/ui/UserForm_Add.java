@@ -56,7 +56,8 @@ public class UserForm_Add extends UserForm {
         task.setOnComplete(new Runnable() {
             @Override
             public void run() {
-
+                UIHelpers.closeStage(event);
+                UIHelpers.showInformationDialog("User Added", "User has been added successfully");
             }
         });
 
