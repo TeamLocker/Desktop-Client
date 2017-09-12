@@ -33,6 +33,11 @@ public class UserForm_Add extends UserForm {
             return;
         }
 
+        if (txtPassword.getText().length() == 0) {
+            showPasswordUnsetAlert();
+            return;
+        }
+
         SpinnerTask<User> task = new SpinnerTask<User>(stackPaneRoot, gridPaneControl) {
             @Override
             protected User call() throws Exception {

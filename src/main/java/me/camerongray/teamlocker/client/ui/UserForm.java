@@ -24,10 +24,11 @@ public abstract class UserForm implements Initializable {
     }
 
     void showPasswordMismatchAlert() {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Password mismatch");
-        alert.setHeaderText("Passwords do not match");
-        alert.setContentText("The passwords you have entered do not match.  Check the passwords then try again");
-        alert.showAndWait();
+        UIHelpers.showErrorDialog("Password mismatch", "The passwords you have entered do not match." +
+                " Check the passwords then try again");
+    }
+
+    void showPasswordUnsetAlert() {
+        UIHelpers.showErrorDialog("Password required", "Password must not be empty");
     }
 }
