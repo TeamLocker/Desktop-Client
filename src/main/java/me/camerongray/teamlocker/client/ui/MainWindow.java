@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
 import me.camerongray.teamlocker.client.core.User;
 import me.camerongray.teamlocker.client.utils.UIHelpers;
 
@@ -18,6 +19,7 @@ public class MainWindow implements Initializable {
 
     @FXML Label lblLoggedInUsername;
     @FXML Label lblLoggedInIsAdministrator;
+    @FXML Menu  menuSystemAdministration;
 
     public MainWindow(User user) {
         this.user = user;
@@ -39,5 +41,8 @@ public class MainWindow implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         lblLoggedInUsername.setText(user.getUsername());
         lblLoggedInIsAdministrator.setVisible(user.isAdmin());
+        if (!user.isAdmin()) {
+            menuSystemAdministration.setVisible(false);
+        }
     }
 }
