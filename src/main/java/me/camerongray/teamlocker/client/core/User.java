@@ -114,6 +114,8 @@ public class User {
             AddUser.AddUserResponse response = AddUser.AddUserResponse.parseFrom(apiResponse.getBody());
             throw new ServerProvidedException(response.getResult().getMessage());
         }
+
+        // TODO: Return a new user populated with data from the server (e.g. ID)
     }
 
     public int getId() {
