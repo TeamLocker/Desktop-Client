@@ -19,65 +19,65 @@ public final class Objects {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 id = 1;</code>
+     * <code>int32 id = 1;</code>
      */
     int getId();
 
     /**
-     * <code>optional string username = 2;</code>
+     * <code>string username = 2;</code>
      */
     java.lang.String getUsername();
     /**
-     * <code>optional string username = 2;</code>
+     * <code>string username = 2;</code>
      */
     com.google.protobuf.ByteString
         getUsernameBytes();
 
     /**
-     * <code>optional string full_name = 3;</code>
+     * <code>string full_name = 3;</code>
      */
     java.lang.String getFullName();
     /**
-     * <code>optional string full_name = 3;</code>
+     * <code>string full_name = 3;</code>
      */
     com.google.protobuf.ByteString
         getFullNameBytes();
 
     /**
-     * <code>optional bytes auth_key = 4;</code>
+     * <code>bytes auth_key = 4;</code>
      */
     com.google.protobuf.ByteString getAuthKey();
 
     /**
-     * <code>optional bytes auth_key_hash = 5;</code>
+     * <code>bytes auth_key_hash = 5;</code>
      */
     com.google.protobuf.ByteString getAuthKeyHash();
 
     /**
-     * <code>optional .LibsodiumItem encrypted_private_key = 6;</code>
+     * <code>.LibsodiumItem encrypted_private_key = 6;</code>
      */
     boolean hasEncryptedPrivateKey();
     /**
-     * <code>optional .LibsodiumItem encrypted_private_key = 6;</code>
+     * <code>.LibsodiumItem encrypted_private_key = 6;</code>
      */
     me.camerongray.teamlocker.client.protobufs.Libsodium.LibsodiumItem getEncryptedPrivateKey();
     /**
-     * <code>optional .LibsodiumItem encrypted_private_key = 6;</code>
+     * <code>.LibsodiumItem encrypted_private_key = 6;</code>
      */
     me.camerongray.teamlocker.client.protobufs.Libsodium.LibsodiumItemOrBuilder getEncryptedPrivateKeyOrBuilder();
 
     /**
-     * <code>optional bytes public_key = 7;</code>
+     * <code>bytes public_key = 7;</code>
      */
     com.google.protobuf.ByteString getPublicKey();
 
     /**
-     * <code>optional bytes kdf_salt = 8;</code>
+     * <code>bytes kdf_salt = 8;</code>
      */
     com.google.protobuf.ByteString getKdfSalt();
 
     /**
-     * <code>optional bool is_admin = 9;</code>
+     * <code>bool is_admin = 9;</code>
      */
     boolean getIsAdmin();
   }
@@ -88,6 +88,7 @@ public final class Objects {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:User)
       UserOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use User.newBuilder() to construct.
     private User(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -106,7 +107,7 @@ public final class Objects {
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+      return this.unknownFields;
     }
     private User(
         com.google.protobuf.CodedInputStream input,
@@ -114,6 +115,8 @@ public final class Objects {
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -123,7 +126,8 @@ public final class Objects {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -191,6 +195,7 @@ public final class Objects {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -209,7 +214,7 @@ public final class Objects {
     public static final int ID_FIELD_NUMBER = 1;
     private int id_;
     /**
-     * <code>optional int32 id = 1;</code>
+     * <code>int32 id = 1;</code>
      */
     public int getId() {
       return id_;
@@ -218,7 +223,7 @@ public final class Objects {
     public static final int USERNAME_FIELD_NUMBER = 2;
     private volatile java.lang.Object username_;
     /**
-     * <code>optional string username = 2;</code>
+     * <code>string username = 2;</code>
      */
     public java.lang.String getUsername() {
       java.lang.Object ref = username_;
@@ -233,7 +238,7 @@ public final class Objects {
       }
     }
     /**
-     * <code>optional string username = 2;</code>
+     * <code>string username = 2;</code>
      */
     public com.google.protobuf.ByteString
         getUsernameBytes() {
@@ -252,7 +257,7 @@ public final class Objects {
     public static final int FULL_NAME_FIELD_NUMBER = 3;
     private volatile java.lang.Object fullName_;
     /**
-     * <code>optional string full_name = 3;</code>
+     * <code>string full_name = 3;</code>
      */
     public java.lang.String getFullName() {
       java.lang.Object ref = fullName_;
@@ -267,7 +272,7 @@ public final class Objects {
       }
     }
     /**
-     * <code>optional string full_name = 3;</code>
+     * <code>string full_name = 3;</code>
      */
     public com.google.protobuf.ByteString
         getFullNameBytes() {
@@ -286,7 +291,7 @@ public final class Objects {
     public static final int AUTH_KEY_FIELD_NUMBER = 4;
     private com.google.protobuf.ByteString authKey_;
     /**
-     * <code>optional bytes auth_key = 4;</code>
+     * <code>bytes auth_key = 4;</code>
      */
     public com.google.protobuf.ByteString getAuthKey() {
       return authKey_;
@@ -295,7 +300,7 @@ public final class Objects {
     public static final int AUTH_KEY_HASH_FIELD_NUMBER = 5;
     private com.google.protobuf.ByteString authKeyHash_;
     /**
-     * <code>optional bytes auth_key_hash = 5;</code>
+     * <code>bytes auth_key_hash = 5;</code>
      */
     public com.google.protobuf.ByteString getAuthKeyHash() {
       return authKeyHash_;
@@ -304,19 +309,19 @@ public final class Objects {
     public static final int ENCRYPTED_PRIVATE_KEY_FIELD_NUMBER = 6;
     private me.camerongray.teamlocker.client.protobufs.Libsodium.LibsodiumItem encryptedPrivateKey_;
     /**
-     * <code>optional .LibsodiumItem encrypted_private_key = 6;</code>
+     * <code>.LibsodiumItem encrypted_private_key = 6;</code>
      */
     public boolean hasEncryptedPrivateKey() {
       return encryptedPrivateKey_ != null;
     }
     /**
-     * <code>optional .LibsodiumItem encrypted_private_key = 6;</code>
+     * <code>.LibsodiumItem encrypted_private_key = 6;</code>
      */
     public me.camerongray.teamlocker.client.protobufs.Libsodium.LibsodiumItem getEncryptedPrivateKey() {
       return encryptedPrivateKey_ == null ? me.camerongray.teamlocker.client.protobufs.Libsodium.LibsodiumItem.getDefaultInstance() : encryptedPrivateKey_;
     }
     /**
-     * <code>optional .LibsodiumItem encrypted_private_key = 6;</code>
+     * <code>.LibsodiumItem encrypted_private_key = 6;</code>
      */
     public me.camerongray.teamlocker.client.protobufs.Libsodium.LibsodiumItemOrBuilder getEncryptedPrivateKeyOrBuilder() {
       return getEncryptedPrivateKey();
@@ -325,7 +330,7 @@ public final class Objects {
     public static final int PUBLIC_KEY_FIELD_NUMBER = 7;
     private com.google.protobuf.ByteString publicKey_;
     /**
-     * <code>optional bytes public_key = 7;</code>
+     * <code>bytes public_key = 7;</code>
      */
     public com.google.protobuf.ByteString getPublicKey() {
       return publicKey_;
@@ -334,7 +339,7 @@ public final class Objects {
     public static final int KDF_SALT_FIELD_NUMBER = 8;
     private com.google.protobuf.ByteString kdfSalt_;
     /**
-     * <code>optional bytes kdf_salt = 8;</code>
+     * <code>bytes kdf_salt = 8;</code>
      */
     public com.google.protobuf.ByteString getKdfSalt() {
       return kdfSalt_;
@@ -343,7 +348,7 @@ public final class Objects {
     public static final int IS_ADMIN_FIELD_NUMBER = 9;
     private boolean isAdmin_;
     /**
-     * <code>optional bool is_admin = 9;</code>
+     * <code>bool is_admin = 9;</code>
      */
     public boolean getIsAdmin() {
       return isAdmin_;
@@ -388,6 +393,7 @@ public final class Objects {
       if (isAdmin_ != false) {
         output.writeBool(9, isAdmin_);
       }
+      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -429,11 +435,11 @@ public final class Objects {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(9, isAdmin_);
       }
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -466,6 +472,7 @@ public final class Objects {
           .equals(other.getKdfSalt());
       result = result && (getIsAdmin()
           == other.getIsAdmin());
+      result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
 
@@ -475,7 +482,7 @@ public final class Objects {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId();
       hash = (37 * hash) + USERNAME_FIELD_NUMBER;
@@ -502,6 +509,17 @@ public final class Objects {
       return hash;
     }
 
+    public static me.camerongray.teamlocker.client.protobufs.Objects.User parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static me.camerongray.teamlocker.client.protobufs.Objects.User parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static me.camerongray.teamlocker.client.protobufs.Objects.User parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -681,7 +699,7 @@ public final class Objects {
       }
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
@@ -694,12 +712,12 @@ public final class Objects {
       }
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -742,6 +760,7 @@ public final class Objects {
         if (other.getIsAdmin() != false) {
           setIsAdmin(other.getIsAdmin());
         }
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -770,13 +789,13 @@ public final class Objects {
 
       private int id_ ;
       /**
-       * <code>optional int32 id = 1;</code>
+       * <code>int32 id = 1;</code>
        */
       public int getId() {
         return id_;
       }
       /**
-       * <code>optional int32 id = 1;</code>
+       * <code>int32 id = 1;</code>
        */
       public Builder setId(int value) {
         
@@ -785,7 +804,7 @@ public final class Objects {
         return this;
       }
       /**
-       * <code>optional int32 id = 1;</code>
+       * <code>int32 id = 1;</code>
        */
       public Builder clearId() {
         
@@ -796,7 +815,7 @@ public final class Objects {
 
       private java.lang.Object username_ = "";
       /**
-       * <code>optional string username = 2;</code>
+       * <code>string username = 2;</code>
        */
       public java.lang.String getUsername() {
         java.lang.Object ref = username_;
@@ -811,7 +830,7 @@ public final class Objects {
         }
       }
       /**
-       * <code>optional string username = 2;</code>
+       * <code>string username = 2;</code>
        */
       public com.google.protobuf.ByteString
           getUsernameBytes() {
@@ -827,7 +846,7 @@ public final class Objects {
         }
       }
       /**
-       * <code>optional string username = 2;</code>
+       * <code>string username = 2;</code>
        */
       public Builder setUsername(
           java.lang.String value) {
@@ -840,7 +859,7 @@ public final class Objects {
         return this;
       }
       /**
-       * <code>optional string username = 2;</code>
+       * <code>string username = 2;</code>
        */
       public Builder clearUsername() {
         
@@ -849,7 +868,7 @@ public final class Objects {
         return this;
       }
       /**
-       * <code>optional string username = 2;</code>
+       * <code>string username = 2;</code>
        */
       public Builder setUsernameBytes(
           com.google.protobuf.ByteString value) {
@@ -865,7 +884,7 @@ public final class Objects {
 
       private java.lang.Object fullName_ = "";
       /**
-       * <code>optional string full_name = 3;</code>
+       * <code>string full_name = 3;</code>
        */
       public java.lang.String getFullName() {
         java.lang.Object ref = fullName_;
@@ -880,7 +899,7 @@ public final class Objects {
         }
       }
       /**
-       * <code>optional string full_name = 3;</code>
+       * <code>string full_name = 3;</code>
        */
       public com.google.protobuf.ByteString
           getFullNameBytes() {
@@ -896,7 +915,7 @@ public final class Objects {
         }
       }
       /**
-       * <code>optional string full_name = 3;</code>
+       * <code>string full_name = 3;</code>
        */
       public Builder setFullName(
           java.lang.String value) {
@@ -909,7 +928,7 @@ public final class Objects {
         return this;
       }
       /**
-       * <code>optional string full_name = 3;</code>
+       * <code>string full_name = 3;</code>
        */
       public Builder clearFullName() {
         
@@ -918,7 +937,7 @@ public final class Objects {
         return this;
       }
       /**
-       * <code>optional string full_name = 3;</code>
+       * <code>string full_name = 3;</code>
        */
       public Builder setFullNameBytes(
           com.google.protobuf.ByteString value) {
@@ -934,13 +953,13 @@ public final class Objects {
 
       private com.google.protobuf.ByteString authKey_ = com.google.protobuf.ByteString.EMPTY;
       /**
-       * <code>optional bytes auth_key = 4;</code>
+       * <code>bytes auth_key = 4;</code>
        */
       public com.google.protobuf.ByteString getAuthKey() {
         return authKey_;
       }
       /**
-       * <code>optional bytes auth_key = 4;</code>
+       * <code>bytes auth_key = 4;</code>
        */
       public Builder setAuthKey(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -952,7 +971,7 @@ public final class Objects {
         return this;
       }
       /**
-       * <code>optional bytes auth_key = 4;</code>
+       * <code>bytes auth_key = 4;</code>
        */
       public Builder clearAuthKey() {
         
@@ -963,13 +982,13 @@ public final class Objects {
 
       private com.google.protobuf.ByteString authKeyHash_ = com.google.protobuf.ByteString.EMPTY;
       /**
-       * <code>optional bytes auth_key_hash = 5;</code>
+       * <code>bytes auth_key_hash = 5;</code>
        */
       public com.google.protobuf.ByteString getAuthKeyHash() {
         return authKeyHash_;
       }
       /**
-       * <code>optional bytes auth_key_hash = 5;</code>
+       * <code>bytes auth_key_hash = 5;</code>
        */
       public Builder setAuthKeyHash(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -981,7 +1000,7 @@ public final class Objects {
         return this;
       }
       /**
-       * <code>optional bytes auth_key_hash = 5;</code>
+       * <code>bytes auth_key_hash = 5;</code>
        */
       public Builder clearAuthKeyHash() {
         
@@ -994,13 +1013,13 @@ public final class Objects {
       private com.google.protobuf.SingleFieldBuilderV3<
           me.camerongray.teamlocker.client.protobufs.Libsodium.LibsodiumItem, me.camerongray.teamlocker.client.protobufs.Libsodium.LibsodiumItem.Builder, me.camerongray.teamlocker.client.protobufs.Libsodium.LibsodiumItemOrBuilder> encryptedPrivateKeyBuilder_;
       /**
-       * <code>optional .LibsodiumItem encrypted_private_key = 6;</code>
+       * <code>.LibsodiumItem encrypted_private_key = 6;</code>
        */
       public boolean hasEncryptedPrivateKey() {
         return encryptedPrivateKeyBuilder_ != null || encryptedPrivateKey_ != null;
       }
       /**
-       * <code>optional .LibsodiumItem encrypted_private_key = 6;</code>
+       * <code>.LibsodiumItem encrypted_private_key = 6;</code>
        */
       public me.camerongray.teamlocker.client.protobufs.Libsodium.LibsodiumItem getEncryptedPrivateKey() {
         if (encryptedPrivateKeyBuilder_ == null) {
@@ -1010,7 +1029,7 @@ public final class Objects {
         }
       }
       /**
-       * <code>optional .LibsodiumItem encrypted_private_key = 6;</code>
+       * <code>.LibsodiumItem encrypted_private_key = 6;</code>
        */
       public Builder setEncryptedPrivateKey(me.camerongray.teamlocker.client.protobufs.Libsodium.LibsodiumItem value) {
         if (encryptedPrivateKeyBuilder_ == null) {
@@ -1026,7 +1045,7 @@ public final class Objects {
         return this;
       }
       /**
-       * <code>optional .LibsodiumItem encrypted_private_key = 6;</code>
+       * <code>.LibsodiumItem encrypted_private_key = 6;</code>
        */
       public Builder setEncryptedPrivateKey(
           me.camerongray.teamlocker.client.protobufs.Libsodium.LibsodiumItem.Builder builderForValue) {
@@ -1040,7 +1059,7 @@ public final class Objects {
         return this;
       }
       /**
-       * <code>optional .LibsodiumItem encrypted_private_key = 6;</code>
+       * <code>.LibsodiumItem encrypted_private_key = 6;</code>
        */
       public Builder mergeEncryptedPrivateKey(me.camerongray.teamlocker.client.protobufs.Libsodium.LibsodiumItem value) {
         if (encryptedPrivateKeyBuilder_ == null) {
@@ -1058,7 +1077,7 @@ public final class Objects {
         return this;
       }
       /**
-       * <code>optional .LibsodiumItem encrypted_private_key = 6;</code>
+       * <code>.LibsodiumItem encrypted_private_key = 6;</code>
        */
       public Builder clearEncryptedPrivateKey() {
         if (encryptedPrivateKeyBuilder_ == null) {
@@ -1072,7 +1091,7 @@ public final class Objects {
         return this;
       }
       /**
-       * <code>optional .LibsodiumItem encrypted_private_key = 6;</code>
+       * <code>.LibsodiumItem encrypted_private_key = 6;</code>
        */
       public me.camerongray.teamlocker.client.protobufs.Libsodium.LibsodiumItem.Builder getEncryptedPrivateKeyBuilder() {
         
@@ -1080,7 +1099,7 @@ public final class Objects {
         return getEncryptedPrivateKeyFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .LibsodiumItem encrypted_private_key = 6;</code>
+       * <code>.LibsodiumItem encrypted_private_key = 6;</code>
        */
       public me.camerongray.teamlocker.client.protobufs.Libsodium.LibsodiumItemOrBuilder getEncryptedPrivateKeyOrBuilder() {
         if (encryptedPrivateKeyBuilder_ != null) {
@@ -1091,7 +1110,7 @@ public final class Objects {
         }
       }
       /**
-       * <code>optional .LibsodiumItem encrypted_private_key = 6;</code>
+       * <code>.LibsodiumItem encrypted_private_key = 6;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           me.camerongray.teamlocker.client.protobufs.Libsodium.LibsodiumItem, me.camerongray.teamlocker.client.protobufs.Libsodium.LibsodiumItem.Builder, me.camerongray.teamlocker.client.protobufs.Libsodium.LibsodiumItemOrBuilder> 
@@ -1109,13 +1128,13 @@ public final class Objects {
 
       private com.google.protobuf.ByteString publicKey_ = com.google.protobuf.ByteString.EMPTY;
       /**
-       * <code>optional bytes public_key = 7;</code>
+       * <code>bytes public_key = 7;</code>
        */
       public com.google.protobuf.ByteString getPublicKey() {
         return publicKey_;
       }
       /**
-       * <code>optional bytes public_key = 7;</code>
+       * <code>bytes public_key = 7;</code>
        */
       public Builder setPublicKey(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -1127,7 +1146,7 @@ public final class Objects {
         return this;
       }
       /**
-       * <code>optional bytes public_key = 7;</code>
+       * <code>bytes public_key = 7;</code>
        */
       public Builder clearPublicKey() {
         
@@ -1138,13 +1157,13 @@ public final class Objects {
 
       private com.google.protobuf.ByteString kdfSalt_ = com.google.protobuf.ByteString.EMPTY;
       /**
-       * <code>optional bytes kdf_salt = 8;</code>
+       * <code>bytes kdf_salt = 8;</code>
        */
       public com.google.protobuf.ByteString getKdfSalt() {
         return kdfSalt_;
       }
       /**
-       * <code>optional bytes kdf_salt = 8;</code>
+       * <code>bytes kdf_salt = 8;</code>
        */
       public Builder setKdfSalt(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -1156,7 +1175,7 @@ public final class Objects {
         return this;
       }
       /**
-       * <code>optional bytes kdf_salt = 8;</code>
+       * <code>bytes kdf_salt = 8;</code>
        */
       public Builder clearKdfSalt() {
         
@@ -1167,13 +1186,13 @@ public final class Objects {
 
       private boolean isAdmin_ ;
       /**
-       * <code>optional bool is_admin = 9;</code>
+       * <code>bool is_admin = 9;</code>
        */
       public boolean getIsAdmin() {
         return isAdmin_;
       }
       /**
-       * <code>optional bool is_admin = 9;</code>
+       * <code>bool is_admin = 9;</code>
        */
       public Builder setIsAdmin(boolean value) {
         
@@ -1182,7 +1201,7 @@ public final class Objects {
         return this;
       }
       /**
-       * <code>optional bool is_admin = 9;</code>
+       * <code>bool is_admin = 9;</code>
        */
       public Builder clearIsAdmin() {
         
@@ -1192,12 +1211,12 @@ public final class Objects {
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.mergeUnknownFields(unknownFields);
       }
 
 
@@ -1239,11 +1258,601 @@ public final class Objects {
 
   }
 
+  public interface FolderOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:Folder)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 id = 1;</code>
+     */
+    int getId();
+
+    /**
+     * <code>string name = 2;</code>
+     */
+    java.lang.String getName();
+    /**
+     * <code>string name = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getNameBytes();
+  }
+  /**
+   * Protobuf type {@code Folder}
+   */
+  public  static final class Folder extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:Folder)
+      FolderOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use Folder.newBuilder() to construct.
+    private Folder(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private Folder() {
+      id_ = 0;
+      name_ = "";
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private Folder(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+
+              id_ = input.readInt32();
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              name_ = s;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return me.camerongray.teamlocker.client.protobufs.Objects.internal_static_Folder_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return me.camerongray.teamlocker.client.protobufs.Objects.internal_static_Folder_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              me.camerongray.teamlocker.client.protobufs.Objects.Folder.class, me.camerongray.teamlocker.client.protobufs.Objects.Folder.Builder.class);
+    }
+
+    public static final int ID_FIELD_NUMBER = 1;
+    private int id_;
+    /**
+     * <code>int32 id = 1;</code>
+     */
+    public int getId() {
+      return id_;
+    }
+
+    public static final int NAME_FIELD_NUMBER = 2;
+    private volatile java.lang.Object name_;
+    /**
+     * <code>string name = 2;</code>
+     */
+    public java.lang.String getName() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        name_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string name = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getNameBytes() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        name_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (id_ != 0) {
+        output.writeInt32(1, id_);
+      }
+      if (!getNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, name_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (id_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, id_);
+      }
+      if (!getNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, name_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof me.camerongray.teamlocker.client.protobufs.Objects.Folder)) {
+        return super.equals(obj);
+      }
+      me.camerongray.teamlocker.client.protobufs.Objects.Folder other = (me.camerongray.teamlocker.client.protobufs.Objects.Folder) obj;
+
+      boolean result = true;
+      result = result && (getId()
+          == other.getId());
+      result = result && getName()
+          .equals(other.getName());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId();
+      hash = (37 * hash) + NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getName().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static me.camerongray.teamlocker.client.protobufs.Objects.Folder parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static me.camerongray.teamlocker.client.protobufs.Objects.Folder parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static me.camerongray.teamlocker.client.protobufs.Objects.Folder parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static me.camerongray.teamlocker.client.protobufs.Objects.Folder parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static me.camerongray.teamlocker.client.protobufs.Objects.Folder parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static me.camerongray.teamlocker.client.protobufs.Objects.Folder parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static me.camerongray.teamlocker.client.protobufs.Objects.Folder parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static me.camerongray.teamlocker.client.protobufs.Objects.Folder parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static me.camerongray.teamlocker.client.protobufs.Objects.Folder parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static me.camerongray.teamlocker.client.protobufs.Objects.Folder parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static me.camerongray.teamlocker.client.protobufs.Objects.Folder parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static me.camerongray.teamlocker.client.protobufs.Objects.Folder parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(me.camerongray.teamlocker.client.protobufs.Objects.Folder prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code Folder}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:Folder)
+        me.camerongray.teamlocker.client.protobufs.Objects.FolderOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return me.camerongray.teamlocker.client.protobufs.Objects.internal_static_Folder_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return me.camerongray.teamlocker.client.protobufs.Objects.internal_static_Folder_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                me.camerongray.teamlocker.client.protobufs.Objects.Folder.class, me.camerongray.teamlocker.client.protobufs.Objects.Folder.Builder.class);
+      }
+
+      // Construct using me.camerongray.teamlocker.client.protobufs.Objects.Folder.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        id_ = 0;
+
+        name_ = "";
+
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return me.camerongray.teamlocker.client.protobufs.Objects.internal_static_Folder_descriptor;
+      }
+
+      public me.camerongray.teamlocker.client.protobufs.Objects.Folder getDefaultInstanceForType() {
+        return me.camerongray.teamlocker.client.protobufs.Objects.Folder.getDefaultInstance();
+      }
+
+      public me.camerongray.teamlocker.client.protobufs.Objects.Folder build() {
+        me.camerongray.teamlocker.client.protobufs.Objects.Folder result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public me.camerongray.teamlocker.client.protobufs.Objects.Folder buildPartial() {
+        me.camerongray.teamlocker.client.protobufs.Objects.Folder result = new me.camerongray.teamlocker.client.protobufs.Objects.Folder(this);
+        result.id_ = id_;
+        result.name_ = name_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof me.camerongray.teamlocker.client.protobufs.Objects.Folder) {
+          return mergeFrom((me.camerongray.teamlocker.client.protobufs.Objects.Folder)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(me.camerongray.teamlocker.client.protobufs.Objects.Folder other) {
+        if (other == me.camerongray.teamlocker.client.protobufs.Objects.Folder.getDefaultInstance()) return this;
+        if (other.getId() != 0) {
+          setId(other.getId());
+        }
+        if (!other.getName().isEmpty()) {
+          name_ = other.name_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        me.camerongray.teamlocker.client.protobufs.Objects.Folder parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (me.camerongray.teamlocker.client.protobufs.Objects.Folder) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int id_ ;
+      /**
+       * <code>int32 id = 1;</code>
+       */
+      public int getId() {
+        return id_;
+      }
+      /**
+       * <code>int32 id = 1;</code>
+       */
+      public Builder setId(int value) {
+        
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 id = 1;</code>
+       */
+      public Builder clearId() {
+        
+        id_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object name_ = "";
+      /**
+       * <code>string name = 2;</code>
+       */
+      public java.lang.String getName() {
+        java.lang.Object ref = name_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          name_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string name = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getNameBytes() {
+        java.lang.Object ref = name_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          name_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string name = 2;</code>
+       */
+      public Builder setName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        name_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string name = 2;</code>
+       */
+      public Builder clearName() {
+        
+        name_ = getDefaultInstance().getName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string name = 2;</code>
+       */
+      public Builder setNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        name_ = value;
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:Folder)
+    }
+
+    // @@protoc_insertion_point(class_scope:Folder)
+    private static final me.camerongray.teamlocker.client.protobufs.Objects.Folder DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new me.camerongray.teamlocker.client.protobufs.Objects.Folder();
+    }
+
+    public static me.camerongray.teamlocker.client.protobufs.Objects.Folder getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<Folder>
+        PARSER = new com.google.protobuf.AbstractParser<Folder>() {
+      public Folder parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new Folder(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<Folder> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Folder> getParserForType() {
+      return PARSER;
+    }
+
+    public me.camerongray.teamlocker.client.protobufs.Objects.Folder getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_User_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_User_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Folder_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Folder_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -1259,8 +1868,9 @@ public final class Objects {
       "ey\030\004 \001(\014\022\025\n\rauth_key_hash\030\005 \001(\014\022-\n\025encry" +
       "pted_private_key\030\006 \001(\0132\016.LibsodiumItem\022\022" +
       "\n\npublic_key\030\007 \001(\014\022\020\n\010kdf_salt\030\010 \001(\014\022\020\n\010" +
-      "is_admin\030\t \001(\010B,\n*me.camerongray.teamloc" +
-      "ker.client.protobufsb\006proto3"
+      "is_admin\030\t \001(\010\"\"\n\006Folder\022\n\n\002id\030\001 \001(\005\022\014\n\004" +
+      "name\030\002 \001(\tB,\n*me.camerongray.teamlocker." +
+      "client.protobufsb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -1281,6 +1891,12 @@ public final class Objects {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_User_descriptor,
         new java.lang.String[] { "Id", "Username", "FullName", "AuthKey", "AuthKeyHash", "EncryptedPrivateKey", "PublicKey", "KdfSalt", "IsAdmin", });
+    internal_static_Folder_descriptor =
+      getDescriptor().getMessageTypes().get(1);
+    internal_static_Folder_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Folder_descriptor,
+        new java.lang.String[] { "Id", "Name", });
     me.camerongray.teamlocker.client.protobufs.Libsodium.getDescriptor();
   }
 

@@ -19,22 +19,22 @@ public final class Libsodium {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional bytes data = 1;</code>
+     * <code>bytes data = 1;</code>
      */
     com.google.protobuf.ByteString getData();
 
     /**
-     * <code>optional bytes nonce = 2;</code>
+     * <code>bytes nonce = 2;</code>
      */
     com.google.protobuf.ByteString getNonce();
 
     /**
-     * <code>optional int64 ops_limit = 3;</code>
+     * <code>int64 ops_limit = 3;</code>
      */
     long getOpsLimit();
 
     /**
-     * <code>optional int64 mem_limit = 4;</code>
+     * <code>int64 mem_limit = 4;</code>
      */
     long getMemLimit();
   }
@@ -45,6 +45,7 @@ public final class Libsodium {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:LibsodiumItem)
       LibsodiumItemOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use LibsodiumItem.newBuilder() to construct.
     private LibsodiumItem(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -59,7 +60,7 @@ public final class Libsodium {
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+      return this.unknownFields;
     }
     private LibsodiumItem(
         com.google.protobuf.CodedInputStream input,
@@ -67,6 +68,8 @@ public final class Libsodium {
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -76,7 +79,8 @@ public final class Libsodium {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -109,6 +113,7 @@ public final class Libsodium {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -127,7 +132,7 @@ public final class Libsodium {
     public static final int DATA_FIELD_NUMBER = 1;
     private com.google.protobuf.ByteString data_;
     /**
-     * <code>optional bytes data = 1;</code>
+     * <code>bytes data = 1;</code>
      */
     public com.google.protobuf.ByteString getData() {
       return data_;
@@ -136,7 +141,7 @@ public final class Libsodium {
     public static final int NONCE_FIELD_NUMBER = 2;
     private com.google.protobuf.ByteString nonce_;
     /**
-     * <code>optional bytes nonce = 2;</code>
+     * <code>bytes nonce = 2;</code>
      */
     public com.google.protobuf.ByteString getNonce() {
       return nonce_;
@@ -145,7 +150,7 @@ public final class Libsodium {
     public static final int OPS_LIMIT_FIELD_NUMBER = 3;
     private long opsLimit_;
     /**
-     * <code>optional int64 ops_limit = 3;</code>
+     * <code>int64 ops_limit = 3;</code>
      */
     public long getOpsLimit() {
       return opsLimit_;
@@ -154,7 +159,7 @@ public final class Libsodium {
     public static final int MEM_LIMIT_FIELD_NUMBER = 4;
     private long memLimit_;
     /**
-     * <code>optional int64 mem_limit = 4;</code>
+     * <code>int64 mem_limit = 4;</code>
      */
     public long getMemLimit() {
       return memLimit_;
@@ -184,6 +189,7 @@ public final class Libsodium {
       if (memLimit_ != 0L) {
         output.writeInt64(4, memLimit_);
       }
+      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -207,11 +213,11 @@ public final class Libsodium {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(4, memLimit_);
       }
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -231,6 +237,7 @@ public final class Libsodium {
           == other.getOpsLimit());
       result = result && (getMemLimit()
           == other.getMemLimit());
+      result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
 
@@ -240,7 +247,7 @@ public final class Libsodium {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + DATA_FIELD_NUMBER;
       hash = (53 * hash) + getData().hashCode();
       hash = (37 * hash) + NONCE_FIELD_NUMBER;
@@ -256,6 +263,17 @@ public final class Libsodium {
       return hash;
     }
 
+    public static me.camerongray.teamlocker.client.protobufs.Libsodium.LibsodiumItem parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static me.camerongray.teamlocker.client.protobufs.Libsodium.LibsodiumItem parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static me.camerongray.teamlocker.client.protobufs.Libsodium.LibsodiumItem parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -412,7 +430,7 @@ public final class Libsodium {
       }
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
@@ -425,12 +443,12 @@ public final class Libsodium {
       }
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -456,6 +474,7 @@ public final class Libsodium {
         if (other.getMemLimit() != 0L) {
           setMemLimit(other.getMemLimit());
         }
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -484,13 +503,13 @@ public final class Libsodium {
 
       private com.google.protobuf.ByteString data_ = com.google.protobuf.ByteString.EMPTY;
       /**
-       * <code>optional bytes data = 1;</code>
+       * <code>bytes data = 1;</code>
        */
       public com.google.protobuf.ByteString getData() {
         return data_;
       }
       /**
-       * <code>optional bytes data = 1;</code>
+       * <code>bytes data = 1;</code>
        */
       public Builder setData(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -502,7 +521,7 @@ public final class Libsodium {
         return this;
       }
       /**
-       * <code>optional bytes data = 1;</code>
+       * <code>bytes data = 1;</code>
        */
       public Builder clearData() {
         
@@ -513,13 +532,13 @@ public final class Libsodium {
 
       private com.google.protobuf.ByteString nonce_ = com.google.protobuf.ByteString.EMPTY;
       /**
-       * <code>optional bytes nonce = 2;</code>
+       * <code>bytes nonce = 2;</code>
        */
       public com.google.protobuf.ByteString getNonce() {
         return nonce_;
       }
       /**
-       * <code>optional bytes nonce = 2;</code>
+       * <code>bytes nonce = 2;</code>
        */
       public Builder setNonce(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -531,7 +550,7 @@ public final class Libsodium {
         return this;
       }
       /**
-       * <code>optional bytes nonce = 2;</code>
+       * <code>bytes nonce = 2;</code>
        */
       public Builder clearNonce() {
         
@@ -542,13 +561,13 @@ public final class Libsodium {
 
       private long opsLimit_ ;
       /**
-       * <code>optional int64 ops_limit = 3;</code>
+       * <code>int64 ops_limit = 3;</code>
        */
       public long getOpsLimit() {
         return opsLimit_;
       }
       /**
-       * <code>optional int64 ops_limit = 3;</code>
+       * <code>int64 ops_limit = 3;</code>
        */
       public Builder setOpsLimit(long value) {
         
@@ -557,7 +576,7 @@ public final class Libsodium {
         return this;
       }
       /**
-       * <code>optional int64 ops_limit = 3;</code>
+       * <code>int64 ops_limit = 3;</code>
        */
       public Builder clearOpsLimit() {
         
@@ -568,13 +587,13 @@ public final class Libsodium {
 
       private long memLimit_ ;
       /**
-       * <code>optional int64 mem_limit = 4;</code>
+       * <code>int64 mem_limit = 4;</code>
        */
       public long getMemLimit() {
         return memLimit_;
       }
       /**
-       * <code>optional int64 mem_limit = 4;</code>
+       * <code>int64 mem_limit = 4;</code>
        */
       public Builder setMemLimit(long value) {
         
@@ -583,7 +602,7 @@ public final class Libsodium {
         return this;
       }
       /**
-       * <code>optional int64 mem_limit = 4;</code>
+       * <code>int64 mem_limit = 4;</code>
        */
       public Builder clearMemLimit() {
         
@@ -593,12 +612,12 @@ public final class Libsodium {
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.mergeUnknownFields(unknownFields);
       }
 
 

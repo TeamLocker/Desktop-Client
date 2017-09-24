@@ -48,18 +48,18 @@ public class SpinnerTask<T> extends Task<T> {
         }
     };
 
+    /**
+     * Construct a new SpinnerTask
+     * @param rootPane Pane that the spinner should be added to, usually a StackPane
+     * @param controlPane Pane which should be disabled when the task is running
+     */
     public SpinnerTask(Pane rootPane, Pane controlPane) {
-        this(rootPane, controlPane, null);
-    }
-
-    public SpinnerTask(Pane rootPane, Pane controlPane, Runnable onComplete) {
         this.rootPane = rootPane;
         this.controlPane = controlPane;
         this.showSpinner(this.messageProperty());
         this.setOnCancelled(this.taskCompleteEventHandler);
         this.setOnSucceeded(this.taskCompleteEventHandler);
         this.setOnFailed(this.taskFailedEventHandler);
-        this.onComplete = onComplete;
     }
 
     @Override

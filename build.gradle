@@ -17,7 +17,7 @@ repositories {
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     // https://mvnrepository.com/artifact/com.google.protobuf/protobuf-java
-    compile group: 'com.google.protobuf', name: 'protobuf-java', version: '3.3.1'
+    compile group: 'com.google.protobuf', name: 'protobuf-java', version: '3.4.0'
     // https://mvnrepository.com/artifact/org.abstractj.kalium/kalium
     compile group: 'org.abstractj.kalium', name: 'kalium', version: '0.6.0'
     // https://mvnrepository.com/artifact/com.mashape.unirest/unirest-java

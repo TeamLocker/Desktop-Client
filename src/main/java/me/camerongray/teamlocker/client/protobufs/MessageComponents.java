@@ -19,16 +19,16 @@ public final class MessageComponents {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional bool success = 1;</code>
+     * <code>bool success = 1;</code>
      */
     boolean getSuccess();
 
     /**
-     * <code>optional string message = 2;</code>
+     * <code>string message = 2;</code>
      */
     java.lang.String getMessage();
     /**
-     * <code>optional string message = 2;</code>
+     * <code>string message = 2;</code>
      */
     com.google.protobuf.ByteString
         getMessageBytes();
@@ -40,6 +40,7 @@ public final class MessageComponents {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:OperationResult)
       OperationResultOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use OperationResult.newBuilder() to construct.
     private OperationResult(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -52,7 +53,7 @@ public final class MessageComponents {
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+      return this.unknownFields;
     }
     private OperationResult(
         com.google.protobuf.CodedInputStream input,
@@ -60,6 +61,8 @@ public final class MessageComponents {
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -69,7 +72,8 @@ public final class MessageComponents {
               done = true;
               break;
             default: {
-              if (!input.skipField(tag)) {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -93,6 +97,7 @@ public final class MessageComponents {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -111,7 +116,7 @@ public final class MessageComponents {
     public static final int SUCCESS_FIELD_NUMBER = 1;
     private boolean success_;
     /**
-     * <code>optional bool success = 1;</code>
+     * <code>bool success = 1;</code>
      */
     public boolean getSuccess() {
       return success_;
@@ -120,7 +125,7 @@ public final class MessageComponents {
     public static final int MESSAGE_FIELD_NUMBER = 2;
     private volatile java.lang.Object message_;
     /**
-     * <code>optional string message = 2;</code>
+     * <code>string message = 2;</code>
      */
     public java.lang.String getMessage() {
       java.lang.Object ref = message_;
@@ -135,7 +140,7 @@ public final class MessageComponents {
       }
     }
     /**
-     * <code>optional string message = 2;</code>
+     * <code>string message = 2;</code>
      */
     public com.google.protobuf.ByteString
         getMessageBytes() {
@@ -169,6 +174,7 @@ public final class MessageComponents {
       if (!getMessageBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, message_);
       }
+      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -183,11 +189,11 @@ public final class MessageComponents {
       if (!getMessageBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, message_);
       }
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -203,6 +209,7 @@ public final class MessageComponents {
           == other.getSuccess());
       result = result && getMessage()
           .equals(other.getMessage());
+      result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
 
@@ -212,7 +219,7 @@ public final class MessageComponents {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + SUCCESS_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
           getSuccess());
@@ -223,6 +230,17 @@ public final class MessageComponents {
       return hash;
     }
 
+    public static me.camerongray.teamlocker.client.protobufs.MessageComponents.OperationResult parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static me.camerongray.teamlocker.client.protobufs.MessageComponents.OperationResult parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static me.camerongray.teamlocker.client.protobufs.MessageComponents.OperationResult parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -373,7 +391,7 @@ public final class MessageComponents {
       }
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
@@ -386,12 +404,12 @@ public final class MessageComponents {
       }
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -412,6 +430,7 @@ public final class MessageComponents {
           message_ = other.message_;
           onChanged();
         }
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -440,13 +459,13 @@ public final class MessageComponents {
 
       private boolean success_ ;
       /**
-       * <code>optional bool success = 1;</code>
+       * <code>bool success = 1;</code>
        */
       public boolean getSuccess() {
         return success_;
       }
       /**
-       * <code>optional bool success = 1;</code>
+       * <code>bool success = 1;</code>
        */
       public Builder setSuccess(boolean value) {
         
@@ -455,7 +474,7 @@ public final class MessageComponents {
         return this;
       }
       /**
-       * <code>optional bool success = 1;</code>
+       * <code>bool success = 1;</code>
        */
       public Builder clearSuccess() {
         
@@ -466,7 +485,7 @@ public final class MessageComponents {
 
       private java.lang.Object message_ = "";
       /**
-       * <code>optional string message = 2;</code>
+       * <code>string message = 2;</code>
        */
       public java.lang.String getMessage() {
         java.lang.Object ref = message_;
@@ -481,7 +500,7 @@ public final class MessageComponents {
         }
       }
       /**
-       * <code>optional string message = 2;</code>
+       * <code>string message = 2;</code>
        */
       public com.google.protobuf.ByteString
           getMessageBytes() {
@@ -497,7 +516,7 @@ public final class MessageComponents {
         }
       }
       /**
-       * <code>optional string message = 2;</code>
+       * <code>string message = 2;</code>
        */
       public Builder setMessage(
           java.lang.String value) {
@@ -510,7 +529,7 @@ public final class MessageComponents {
         return this;
       }
       /**
-       * <code>optional string message = 2;</code>
+       * <code>string message = 2;</code>
        */
       public Builder clearMessage() {
         
@@ -519,7 +538,7 @@ public final class MessageComponents {
         return this;
       }
       /**
-       * <code>optional string message = 2;</code>
+       * <code>string message = 2;</code>
        */
       public Builder setMessageBytes(
           com.google.protobuf.ByteString value) {
@@ -534,12 +553,12 @@ public final class MessageComponents {
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.setUnknownFieldsProto3(unknownFields);
       }
 
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.mergeUnknownFields(unknownFields);
       }
 
 

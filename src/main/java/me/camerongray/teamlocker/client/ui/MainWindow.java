@@ -13,6 +13,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import me.camerongray.teamlocker.client.core.Folder;
 import me.camerongray.teamlocker.client.core.User;
 import me.camerongray.teamlocker.client.utils.UIHelpers;
@@ -35,6 +37,8 @@ public class MainWindow implements Initializable {
     @FXML private TableView tableAccounts;
     @FXML private Button btnEditFolder;
     @FXML private ListView listFolders;
+    @FXML private StackPane stackPaneRoot;
+    @FXML private AnchorPane anchorPaneFolders;
 
     public MainWindow(User user) {
         this.user = user;
@@ -62,17 +66,28 @@ public class MainWindow implements Initializable {
 
         // TODO - Do something if cancel is pressed to avoid "You must enter a name" message being shown
 
-        String folderName = "";
-        if (optionalFolderName.isPresent()) {
-            folderName = optionalFolderName.get();
-        }
+        final String folderName = optionalFolderName.orElse("");
 
-        if (folderName.trim().length() == 0) {
-            UIHelpers.showInformationDialog("Add Folder", "You must enter a name for this folder");
-            return;
-        }
+        SpinnerTask<Folder> spinnerTask = new SpinnerTask<Folder>(stackPaneRoot, anchorPaneFolders) {
+            @Override
+            protected Folder call() throws Exception {
+                updateMessage("Adding Folder...");
 
-        folders.add(Folder.createNew(folderName));
+                Folder folder = new Folder(folderName);
+                folder = folder.addToServer();
+
+                return folder;
+            }
+        };
+
+        spinnerTask.setOnComplete(new Runnable() {
+            @Override
+            public void run() {
+                UIHelpers.showInformationDialog("Folder Added","Folder added successfully!");
+            }
+        });
+
+        spinnerTask.run();
     }
 
     private void selectedFolderChanged(Folder selectedFolder) {
@@ -90,9 +105,6 @@ public class MainWindow implements Initializable {
         }
 
         listFolders.setItems(folders);
-        folders.add(Folder.createNew("Folder 1"));
-        folders.add(Folder.createNew("Folder 2"));
-        folders.add(Folder.createNew("Folder 3"));
 
         listFolders.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
             @Override

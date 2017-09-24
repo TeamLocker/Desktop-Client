@@ -17,78 +17,80 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
-  <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-  </columnConstraints>
-  <rowConstraints>
-    <RowConstraints minHeight="0.0" vgrow="NEVER" />
-    <RowConstraints vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
-  </rowConstraints>
-   <children>
-      <MenuBar useSystemMenuBar="true">
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
+<StackPane fx:id="stackPaneRoot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+  <GridPane>
+      <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      </columnConstraints>
+      <rowConstraints>
+        <RowConstraints minHeight="0.0" vgrow="NEVER" />
+        <RowConstraints vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
+      </rowConstraints>
+       <children>
+          <MenuBar useSystemMenuBar="true">
+            <menus>
+              <Menu mnemonicParsing="false" text="File">
+                <items>
+                  <MenuItem mnemonicParsing="false" onAction="#btnQuit_Click" text="Quit" />
+                </items>
+              </Menu>
+              <Menu fx:id="menuSystemAdministration" mnemonicParsing="false" text="System Administration">
+                <items>
+                  <MenuItem mnemonicParsing="false" onAction="#btnAddUser_Click" text="Add User" />
+                </items>
+              </Menu>
+            </menus>
+          </MenuBar>
+          <SplitPane dividerPositions="0.29797979797979796" prefHeight="160.0" prefWidth="200.0" GridPane.rowIndex="1">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#btnQuit_Click" text="Quit" />
+              <AnchorPane fx:id="anchorPaneFolders" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                   <children>
+                      <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        </columnConstraints>
+                        <rowConstraints>
+                          <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="SOMETIMES" />
+                          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="26.0" vgrow="SOMETIMES" />
+                        </rowConstraints>
+                         <children>
+                            <ListView fx:id="listFolders" prefHeight="238.0" prefWidth="174.0" GridPane.columnSpan="2147483647" />
+                            <Button fx:id="btnAddFolder" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnAddFolder_Click" text="Add Folder" GridPane.rowIndex="1" />
+                            <Button fx:id="btnEditFolder" disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="35.0" prefWidth="87.0" text="Edit Folder" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                         </children>
+                      </GridPane>
+                   </children>
+                </AnchorPane>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                   <children>
+                      <StackPane prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                         <children>
+                            <Label text="Select a folder to view accounts" />
+                            <TableView fx:id="tableAccounts" prefHeight="200.0" prefWidth="200.0" visible="false">
+                              <columns>
+                                <TableColumn prefWidth="75.0" text="C1" />
+                                <TableColumn prefWidth="75.0" text="C2" />
+                              </columns>
+                            </TableView>
+                         </children>
+                      </StackPane>
+                   </children>
+                </AnchorPane>
             </items>
-          </Menu>
-          <Menu fx:id="menuSystemAdministration" mnemonicParsing="false" text="System Administration">
-            <items>
-              <MenuItem mnemonicParsing="false" onAction="#btnAddUser_Click" text="Add User" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
-      <SplitPane dividerPositions="0.29797979797979796" prefHeight="160.0" prefWidth="200.0" GridPane.rowIndex="1">
-        <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-               <children>
-                  <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                    <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="SOMETIMES" />
-                      <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="26.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <ListView fx:id="listFolders" prefHeight="238.0" prefWidth="174.0" GridPane.columnSpan="2147483647" />
-                        <Button fx:id="btnAddFolder" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnAddFolder_Click" text="Add Folder" GridPane.rowIndex="1" />
-                        <Button fx:id="btnEditFolder" disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="35.0" prefWidth="87.0" text="Edit Folder" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                     </children>
-                  </GridPane>
-               </children>
-            </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-               <children>
-                  <StackPane prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <children>
-                        <Label text="Select a folder to view accounts" />
-                        <TableView fx:id="tableAccounts" prefHeight="200.0" prefWidth="200.0" visible="false">
-                          <columns>
-                            <TableColumn prefWidth="75.0" text="C1" />
-                            <TableColumn prefWidth="75.0" text="C2" />
-                          </columns>
-                        </TableView>
-                     </children>
-                  </StackPane>
-               </children>
-            </AnchorPane>
-        </items>
-      </SplitPane>
-      <ToolBar prefHeight="40.0" prefWidth="200.0" GridPane.rowIndex="2">
-         <items>
-            <Label text="Logged in as:" />
-            <Label fx:id="lblLoggedInUsername" text="[USERNAME]" />
-            <Label fx:id="lblLoggedInIsAdministrator" text="(Administrator)" textFill="#da0000">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </Label>
-         </items>
-      </ToolBar>
-   </children>
-</GridPane>
+          </SplitPane>
+          <ToolBar prefHeight="40.0" prefWidth="200.0" GridPane.rowIndex="2">
+             <items>
+                <Label text="Logged in as:" />
+                <Label fx:id="lblLoggedInUsername" text="[USERNAME]" />
+                <Label fx:id="lblLoggedInIsAdministrator" text="(Administrator)" textFill="#da0000">
+                   <font>
+                      <Font name="System Bold" size="13.0" />
+                   </font>
+                </Label>
+             </items>
+          </ToolBar>
+       </children>
+  </GridPane>
+</StackPane>
