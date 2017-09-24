@@ -43,6 +43,7 @@ public class UserForm_Add extends UserForm {
             protected User call() throws Exception {
                 updateMessage("Generating user...");
 
+                // TODO: Should we be accessing the UI from within this task?
                 User user = User.createNew(txtUsername.getText(), txtFullName.getText(), txtPassword.getText(),
                         chkIsAdmin.isSelected());
 
