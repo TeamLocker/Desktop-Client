@@ -72,7 +72,7 @@ public class MainWindow implements Initializable {
             return;
         }
 
-        folders.add(new Folder(folderName, 1));
+        folders.add(Folder.createNew(folderName));
     }
 
     private void selectedFolderChanged(Folder selectedFolder) {
@@ -90,9 +90,9 @@ public class MainWindow implements Initializable {
         }
 
         listFolders.setItems(folders);
-        folders.add(new Folder("Folder 1", 1));
-        folders.add(new Folder("Folder 2", 1));
-        folders.add(new Folder("Folder 3", 1));
+        folders.add(Folder.createNew("Folder 1"));
+        folders.add(Folder.createNew("Folder 2"));
+        folders.add(Folder.createNew("Folder 3"));
 
         listFolders.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
             @Override

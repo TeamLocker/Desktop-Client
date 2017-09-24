@@ -27,7 +27,7 @@
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
   </rowConstraints>
    <children>
-      <MenuBar>
+      <MenuBar useSystemMenuBar="true">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
