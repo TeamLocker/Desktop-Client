@@ -17,9 +17,12 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import me.camerongray.teamlocker.client.core.Folder;
 import me.camerongray.teamlocker.client.core.User;
+import me.camerongray.teamlocker.client.net.NetworkException;
+import me.camerongray.teamlocker.client.net.ServerProvidedException;
 import me.camerongray.teamlocker.client.utils.UIHelpers;
 
 import javax.swing.*;
+import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
@@ -28,7 +31,7 @@ import java.util.*;
  */
 public class MainWindow implements Initializable {
     private User user;
-    private ObservableList<Folder> folders = new ObservableListWrapper<Folder>(new ArrayList<>());
+    ObservableList<Folder> folders = new ObservableListWrapper<Folder>(new ArrayList<>());
     private Folder selectedFolder = null;
 
     @FXML private Label lblLoggedInUsername;
@@ -84,6 +87,17 @@ public class MainWindow implements Initializable {
             @Override
             public void run() {
                 UIHelpers.showInformationDialog("Folder Added","Folder added successfully!");
+
+                // TODO: Make this neater somehow?
+                try {
+                    updateFolderList();
+                } catch (ServerProvidedException e) {
+                    e.printStackTrace();
+                } catch (NetworkException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -112,5 +126,34 @@ public class MainWindow implements Initializable {
                 selectedFolderChanged((Folder) newValue);
             }
         });
+
+        // TODO: Make this neater somehow?
+        try {
+            updateFolderList();
+        } catch (ServerProvidedException e) {
+            e.printStackTrace();
+        } catch (NetworkException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // TODO: Figure out why this hangs the client and doesn't actually show a spinner!
+    private void updateFolderList() throws ServerProvidedException, NetworkException, IOException {
+        SpinnerTask<Void> spinnerTask = new SpinnerTask<Void>(stackPaneRoot, anchorPaneFolders) {
+            @Override
+            protected Void call() throws Exception {
+                updateMessage("Updating list of folders...");
+
+                Folder[] folders = Folder.getAllFromServer();
+                MainWindow.this.folders.clear();
+                MainWindow.this.folders.addAll(folders);
+
+                return null;
+            }
+        };
+
+        spinnerTask.run();
     }
 }

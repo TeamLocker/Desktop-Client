@@ -5,9 +5,12 @@ import me.camerongray.teamlocker.client.net.ApiResponse;
 import me.camerongray.teamlocker.client.net.NetworkException;
 import me.camerongray.teamlocker.client.net.ServerProvidedException;
 import me.camerongray.teamlocker.client.protobufs.AddFolder;
+import me.camerongray.teamlocker.client.protobufs.GetFolder;
 import me.camerongray.teamlocker.client.protobufs.Objects;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by camerong on 19/09/17.
@@ -48,6 +51,22 @@ public class Folder {
         }
 
         return Folder.fromProtobuf(response.getFolder());
+    }
+
+    public static Folder[] getAllFromServer() throws IOException, NetworkException, ServerProvidedException {
+        ApiResponse apiResponse = ApiClient.getInstance().makeGetRequest("/folders/");
+        GetFolder.GetFolderResponse response = GetFolder.GetFolderResponse.parseFrom(apiResponse.getBody());
+        if (apiResponse.getResponseCode() != 200) {
+            throw new ServerProvidedException(response.getResult().getMessage());
+        }
+
+        ArrayList<Folder> folders = new ArrayList<Folder>();
+        List<Objects.Folder> folderProtobufs = response.getFoldersList();
+        for(Objects.Folder folderProtobuf : folderProtobufs) {
+            folders.add(Folder.fromProtobuf(folderProtobuf));
+        }
+
+        return folders.toArray(new Folder[folders.size()]);
     }
 
     public String toString() {
