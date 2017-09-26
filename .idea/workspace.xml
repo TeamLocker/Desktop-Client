@@ -1002,7 +1002,14 @@
       <option name="project" value="LOCAL" />
       <updated>1506462212028</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Account creation form built with show/hide password feature">
+      <created>1506469045937</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1506469045937</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1081,7 +1088,8 @@
     <MESSAGE value="Added logic to fetch list of folders from server, need to figure out why&#10;SpinnerTask doesn't seem to be doing anything!" />
     <MESSAGE value="Folder retrieval now working correctly with SpinnerTask operating&#10;correctly" />
     <MESSAGE value="Updated folder creation and retrieval logic to only return folders that&#10;the user has at least read access to." />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated folder creation and retrieval logic to only return folders that&#10;the user has at least read access to." />
+    <MESSAGE value="Account creation form built with show/hide password feature" />
+    <option name="LAST_COMMIT_MESSAGE" value="Account creation form built with show/hide password feature" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

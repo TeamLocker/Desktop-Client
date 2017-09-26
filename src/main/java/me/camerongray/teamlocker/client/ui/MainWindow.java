@@ -105,6 +105,13 @@ public class MainWindow implements Initializable {
     }
 
     @FXML
+    void btnAddAccount_Click(ActionEvent event) {
+        AccountForm_Add controller = new AccountForm_Add();
+        UIHelpers.createStage(getClass().getResource("AccountForm.fxml"), controller, "Add Account",
+                640, 400, true).show();
+    }
+
+    @FXML
     void btnRefreshFolderList_Click(ActionEvent event) throws ServerProvidedException, NetworkException, IOException {
         updateFolderList();
     }
