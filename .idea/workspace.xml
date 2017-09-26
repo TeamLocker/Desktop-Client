@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="97ae1488-2bde-4c8b-8404-0b3280881b9d" name="Default" comment="Updated folder creation and retrieval logic to only return folders that&#10;the user has at least read access to.">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/me/camerongray/teamlocker/client/ui/AccountForm.fxml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/me/camerongray/teamlocker/client/ui/AccountForm.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/me/camerongray/teamlocker/client/ui/AccountForm_Add.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/me/camerongray/teamlocker/client/ui/MainWindow.fxml" afterPath="$PROJECT_DIR$/src/main/java/me/camerongray/teamlocker/client/ui/MainWindow.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/me/camerongray/teamlocker/client/ui/MainWindow.java" afterPath="$PROJECT_DIR$/src/main/java/me/camerongray/teamlocker/client/ui/MainWindow.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -63,16 +67,39 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MainWindow.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MainWindow.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/me/camerongray/teamlocker/client/ui/MainWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="810">
-              <caret line="146" column="0" lean-forward="false" selection-start-line="146" selection-start-column="0" selection-end-line="146" selection-end-column="0" />
+            <state relative-caret-position="834">
+              <caret line="110" column="39" lean-forward="true" selection-start-line="110" selection-start-column="39" selection-end-line="110" selection-end-column="39" />
               <folding>
                 <element signature="e#1200#1208#0" expanded="true" />
                 <element signature="e#2604#2612#0" expanded="true" />
-                <element signature="e#5206#5216#0" expanded="true" />
+                <element signature="e#5474#5484#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AccountForm.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/me/camerongray/teamlocker/client/ui/AccountForm.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="27" column="17" lean-forward="false" selection-start-line="27" selection-start-column="17" selection-end-line="27" selection-end-column="17" />
+              <folding>
+                <element signature="e#2107#2108#0" expanded="true" />
+                <element signature="e#2146#2147#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AccountForm_Add.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/me/camerongray/teamlocker/client/ui/AccountForm_Add.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -80,7 +107,7 @@
       <file leaf-file-name="LoginWindow.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/me/camerongray/teamlocker/client/ui/LoginWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-220">
+            <state relative-caret-position="-586">
               <caret line="31" column="30" lean-forward="false" selection-start-line="31" selection-start-column="30" selection-end-line="31" selection-end-column="30" />
               <folding />
             </state>
@@ -549,7 +576,10 @@
         <option value="$PROJECT_DIR$/src/main/java/me/camerongray/teamlocker/client/core/Folder.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/camerongray/teamlocker/client/ui/MainWindow.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/me/camerongray/teamlocker/client/ui/SpinnerTask.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/camerongray/teamlocker/client/ui/AccountForm.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/me/camerongray/teamlocker/client/ui/MainWindow.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/camerongray/teamlocker/client/ui/AccountForm.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/camerongray/teamlocker/client/ui/AccountForm_Add.java" />
       </list>
     </option>
   </component>
@@ -618,15 +648,6 @@
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="protobufs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="client" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Desktop-Client" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
               <item name="ui" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -643,6 +664,12 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/me/camerongray/teamlocker/client/ui" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="me.camerongray.teamlocker.client.ui" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/me/camerongray/teamlocker/client/ui" />
       <recent name="$PROJECT_DIR$/src/main/java/me/camerongray/teamlocker/client/ui/fxml" />
@@ -968,7 +995,14 @@
       <option name="project" value="LOCAL" />
       <updated>1506460821638</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Updated folder creation and retrieval logic to only return folders that&#10;the user has at least read access to.">
+      <created>1506462212028</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1506462212028</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1060,27 +1094,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/camerongray/teamlocker/client/ui/UserForm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="18" column="9" lean-forward="false" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/camerongray/teamlocker/client/ui/UserForm_Add.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="20" column="5" lean-forward="true" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1350,24 +1363,24 @@
         <state relative-caret-position="620">
           <caret line="45" column="24" lean-forward="false" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="24" />
           <folding>
-            <marker date="1506459338000" expanded="true" signature="2301:5014" ph="..." />
-            <marker date="1506459338000" expanded="true" signature="2321:4991" ph="..." />
-            <marker date="1506459338000" expanded="true" signature="2442:4026" ph="..." />
-            <marker date="1506459338000" expanded="true" signature="2472:3996" ph="..." />
-            <marker date="1506459338000" expanded="true" signature="2619:3965" ph="..." />
-            <marker date="1506459338000" expanded="true" signature="2663:2910" ph="..." />
-            <marker date="1506459338000" expanded="true" signature="2951:3233" ph="..." />
-            <marker date="1506459338000" expanded="true" signature="3269:3931" ph="..." />
-            <marker date="1506459338000" expanded="true" signature="4121:4970" ph="..." />
-            <marker date="1506459338000" expanded="true" signature="4151:4940" ph="..." />
-            <marker date="1506459338000" expanded="true" signature="4336:4909" ph="..." />
-            <marker date="1506459338000" expanded="true" signature="4372:4874" ph="..." />
-            <marker date="1506459338000" expanded="true" signature="4565:4837" ph="..." />
-            <marker date="1506459338000" expanded="true" signature="4605:4796" ph="..." />
-            <marker date="1506459338000" expanded="true" signature="5092:5516" ph="..." />
-            <marker date="1506459338000" expanded="true" signature="5113:5495" ph="..." />
-            <marker date="1506459338000" expanded="true" signature="5333:5473" ph="..." />
-            <marker date="1506459338000" expanded="true" signature="5359:5448" ph="..." />
+            <marker date="1506464812000" expanded="true" signature="2566:5279" ph="..." />
+            <marker date="1506464812000" expanded="true" signature="2586:5256" ph="..." />
+            <marker date="1506464812000" expanded="true" signature="2707:4291" ph="..." />
+            <marker date="1506464812000" expanded="true" signature="2737:4261" ph="..." />
+            <marker date="1506464812000" expanded="true" signature="2884:4230" ph="..." />
+            <marker date="1506464812000" expanded="true" signature="2928:3175" ph="..." />
+            <marker date="1506464812000" expanded="true" signature="3216:3498" ph="..." />
+            <marker date="1506464812000" expanded="true" signature="3534:4196" ph="..." />
+            <marker date="1506464812000" expanded="true" signature="4386:5235" ph="..." />
+            <marker date="1506464812000" expanded="true" signature="4416:5205" ph="..." />
+            <marker date="1506464812000" expanded="true" signature="4601:5174" ph="..." />
+            <marker date="1506464812000" expanded="true" signature="4637:5139" ph="..." />
+            <marker date="1506464812000" expanded="true" signature="4830:5102" ph="..." />
+            <marker date="1506464812000" expanded="true" signature="4870:5061" ph="..." />
+            <marker date="1506464812000" expanded="true" signature="5357:5781" ph="..." />
+            <marker date="1506464812000" expanded="true" signature="5378:5760" ph="..." />
+            <marker date="1506464812000" expanded="true" signature="5598:5738" ph="..." />
+            <marker date="1506464812000" expanded="true" signature="5624:5713" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1380,23 +1393,53 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/camerongray/teamlocker/client/ui/LoginWindow.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/camerongray/teamlocker/client/ui/AccountForm.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-220">
-          <caret line="31" column="30" lean-forward="false" selection-start-line="31" selection-start-column="30" selection-end-line="31" selection-end-column="30" />
+        <state relative-caret-position="270">
+          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/camerongray/teamlocker/client/ui/MainWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="810">
-          <caret line="146" column="0" lean-forward="false" selection-start-line="146" selection-start-column="0" selection-end-line="146" selection-end-column="0" />
+        <state relative-caret-position="834">
+          <caret line="110" column="39" lean-forward="true" selection-start-line="110" selection-start-column="39" selection-end-line="110" selection-end-column="39" />
           <folding>
             <element signature="e#1200#1208#0" expanded="true" />
             <element signature="e#2604#2612#0" expanded="true" />
-            <element signature="e#5206#5216#0" expanded="true" />
+            <element signature="e#5474#5484#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/camerongray/teamlocker/client/ui/LoginWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-586">
+          <caret line="31" column="30" lean-forward="false" selection-start-line="31" selection-start-column="30" selection-end-line="31" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/camerongray/teamlocker/client/ui/AccountForm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="27" column="17" lean-forward="false" selection-start-line="27" selection-start-column="17" selection-end-line="27" selection-end-column="17" />
+          <folding>
+            <element signature="e#2107#2108#0" expanded="true" />
+            <element signature="e#2146#2147#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/camerongray/teamlocker/client/ui/AccountForm_Add.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
