@@ -144,7 +144,6 @@ public class MainWindow implements Initializable {
         }
     }
 
-    // TODO: Figure out why this hangs the client and doesn't actually show a spinner!
     private void updateFolderList() throws ServerProvidedException, NetworkException, IOException {
         SpinnerTask<Folder[]> spinnerTask = new SpinnerTask<Folder[]>(stackPaneRoot, anchorPaneFolders) {
             @Override
