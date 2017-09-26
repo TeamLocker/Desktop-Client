@@ -97,6 +97,12 @@ public class SpinnerTask<T> extends Task<T> {
         this.onComplete = onComplete;
     }
 
+    public Thread runOnThread() {
+        Thread thread = new Thread(this);
+        thread.start();
+        return thread;
+    }
+
     public EventHandler<WorkerStateEvent> getHideWorkerEventHandler() {
         return event -> hide();
     }

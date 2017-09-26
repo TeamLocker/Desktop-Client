@@ -101,7 +101,12 @@ public class MainWindow implements Initializable {
             }
         });
 
-        spinnerTask.run();
+        spinnerTask.runOnThread();
+    }
+
+    @FXML
+    void btnRefreshFolderList_Click(ActionEvent event) throws ServerProvidedException, NetworkException, IOException {
+        updateFolderList();
     }
 
     private void selectedFolderChanged(Folder selectedFolder) {
@@ -141,19 +146,27 @@ public class MainWindow implements Initializable {
 
     // TODO: Figure out why this hangs the client and doesn't actually show a spinner!
     private void updateFolderList() throws ServerProvidedException, NetworkException, IOException {
-        SpinnerTask<Void> spinnerTask = new SpinnerTask<Void>(stackPaneRoot, anchorPaneFolders) {
+        SpinnerTask<Folder[]> spinnerTask = new SpinnerTask<Folder[]>(stackPaneRoot, anchorPaneFolders) {
             @Override
-            protected Void call() throws Exception {
+            protected Folder[] call() throws Exception {
                 updateMessage("Updating list of folders...");
 
                 Folder[] folders = Folder.getAllFromServer();
-                MainWindow.this.folders.clear();
-                MainWindow.this.folders.addAll(folders);
 
-                return null;
+                return folders;
             }
         };
 
-        spinnerTask.run();
+        spinnerTask.setOnComplete(new Runnable() {
+            @Override
+            public void run() {
+                Folder[] folders = spinnerTask.getValue();
+
+                MainWindow.this.folders.clear();
+                MainWindow.this.folders.addAll(folders);
+            }
+        });
+
+        spinnerTask.runOnThread();
     }
 }

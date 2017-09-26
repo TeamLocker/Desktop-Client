@@ -35,6 +35,11 @@
                   <MenuItem mnemonicParsing="false" onAction="#btnQuit_Click" text="Quit" />
                 </items>
               </Menu>
+               <Menu mnemonicParsing="false" text="View">
+                 <items>
+                   <MenuItem mnemonicParsing="false" onAction="#btnRefreshFolderList_Click" text="Refresh folder list" />
+                 </items>
+               </Menu>
               <Menu fx:id="menuSystemAdministration" mnemonicParsing="false" text="System Administration">
                 <items>
                   <MenuItem mnemonicParsing="false" onAction="#btnAddUser_Click" text="Add User" />
