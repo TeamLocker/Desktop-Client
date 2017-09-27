@@ -3,10 +3,7 @@ package me.camerongray.teamlocker.client.crypto;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
 import me.camerongray.teamlocker.client.protobufs.Libsodium;
-import org.abstractj.kalium.crypto.Hash;
-import org.abstractj.kalium.crypto.Password;
-import org.abstractj.kalium.crypto.Random;
-import org.abstractj.kalium.crypto.SecretBox;
+import org.abstractj.kalium.crypto.*;
 import org.abstractj.kalium.encoders.Encoder;
 import org.abstractj.kalium.keys.*;
 
@@ -29,6 +26,16 @@ public class CryptoHelpers {
     public static byte[] encryptWithSecret(byte[] message, byte[] key, byte[] nonce) {
         SecretBox box = new SecretBox(key);
         return box.encrypt(nonce, message);
+    }
+
+    public static byte[] encryptWithPublicKey(byte[] message, byte[] publicKey) {
+        SealedBox box = new SealedBox(publicKey);
+        return box.encrypt(message);
+    }
+
+    public static byte[] decryptWithKeypair(byte[] cyphertext, byte[] publicKey, byte[] privateKey) {
+        SealedBox box = new SealedBox(publicKey, privateKey);
+        return box.decrypt(cyphertext);
     }
 
     public static byte[] deriveKeyFromPassword(String password, byte[] salt) {
