@@ -106,7 +106,8 @@ public class MainWindow implements Initializable {
 
     @FXML
     void btnAddAccount_Click(ActionEvent event) {
-        AccountForm_Add controller = new AccountForm_Add();
+        // TODO: Handle when no folder is selected!
+        AccountForm_Add controller = new AccountForm_Add(selectedFolder);
         UIHelpers.createStage(getClass().getResource("AccountForm.fxml"), controller, "Add Account",
                 640, 400, true).show();
     }

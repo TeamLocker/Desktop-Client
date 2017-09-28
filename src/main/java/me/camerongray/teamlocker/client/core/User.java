@@ -87,7 +87,7 @@ public class User {
         return user;
     }
 
-    private static User fromProtobuf(Objects.User protobuf) {
+    public static User fromProtobuf(Objects.User protobuf) {
         User user = new User();
         user.id = protobuf.getId();
         user.username = protobuf.getUsername();

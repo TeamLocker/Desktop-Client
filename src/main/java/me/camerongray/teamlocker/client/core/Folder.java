@@ -6,6 +6,7 @@ import me.camerongray.teamlocker.client.net.NetworkException;
 import me.camerongray.teamlocker.client.net.ServerProvidedException;
 import me.camerongray.teamlocker.client.protobufs.AddFolder;
 import me.camerongray.teamlocker.client.protobufs.GetFolder;
+import me.camerongray.teamlocker.client.protobufs.GetUsers;
 import me.camerongray.teamlocker.client.protobufs.Objects;
 
 import java.io.IOException;
@@ -67,6 +68,22 @@ public class Folder {
         }
 
         return folders.toArray(new Folder[folders.size()]);
+    }
+
+    public User[] getReadUsers() throws IOException, NetworkException, ServerProvidedException {
+        ApiResponse apiResponse = ApiClient.getInstance().makeGetRequest("/folders/" + id + "/users/");
+        GetUsers.GetUsersResponse response = GetUsers.GetUsersResponse.parseFrom(apiResponse.getBody());
+        if (apiResponse.getResponseCode() != 200) {
+            throw new ServerProvidedException(response.getResult().getMessage());
+        }
+
+        ArrayList<User> users = new ArrayList<>();
+        List<Objects.User> userProtobufs = response.getUsersList();
+        for(Objects.User userProtobuf: userProtobufs) {
+            users.add(User.fromProtobuf(userProtobuf));
+        }
+
+        return users.toArray(new User[users.size()]);
     }
 
     public String toString() {

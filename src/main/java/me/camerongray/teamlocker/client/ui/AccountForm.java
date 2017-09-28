@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
+import me.camerongray.teamlocker.client.core.Folder;
 import me.camerongray.teamlocker.client.utils.UIHelpers;
 
 import java.net.URL;

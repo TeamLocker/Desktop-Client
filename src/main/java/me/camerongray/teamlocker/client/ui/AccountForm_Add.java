@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import me.camerongray.teamlocker.client.core.Account;
+import me.camerongray.teamlocker.client.core.Folder;
 import me.camerongray.teamlocker.client.core.User;
 import me.camerongray.teamlocker.client.net.NetworkException;
 import me.camerongray.teamlocker.client.net.ServerProvidedException;
@@ -18,6 +19,12 @@ import java.util.ResourceBundle;
  * Created by camerong on 20/05/17.
  */
 public class AccountForm_Add extends AccountForm {
+    private Folder folder;
+
+    public AccountForm_Add(Folder folder) {
+        this.folder = folder;
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         super.initialize(location, resources);
@@ -27,7 +34,7 @@ public class AccountForm_Add extends AccountForm {
 
     @FXML
     void btnPrimary_Click(ActionEvent event) throws IOException, NetworkException, ServerProvidedException {
-        Account account = new Account(txtAccountName.getText(), txtUsername.getText(), txtPasswordMasked.getText(),
+        Account account = new Account(folder, txtAccountName.getText(), txtUsername.getText(), txtPasswordMasked.getText(),
                 txtComments.getText());
         account.addToServer(); // TODO: This needs moved into a worker of some sort
     }
