@@ -42,6 +42,7 @@ public class MainWindow implements Initializable {
     @FXML private ListView listFolders;
     @FXML private StackPane stackPaneRoot;
     @FXML private AnchorPane anchorPaneFolders;
+    @FXML private MenuItem btnAddAccount;
 
     public MainWindow(User user) {
         this.user = user;
@@ -120,6 +121,7 @@ public class MainWindow implements Initializable {
     private void selectedFolderChanged(Folder selectedFolder) {
         this.selectedFolder = selectedFolder;
         this.btnEditFolder.setDisable(this.selectedFolder == null); // Disable edit button if no folder is selected
+        this.btnAddAccount.setDisable(this.selectedFolder == null);
         // TODO: Fetch folder contents from server and do appropriate UI stuff
     }
 

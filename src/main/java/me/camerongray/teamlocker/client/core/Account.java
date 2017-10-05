@@ -3,6 +3,7 @@ package me.camerongray.teamlocker.client.core;
 import me.camerongray.teamlocker.client.crypto.CryptoHelpers;
 import me.camerongray.teamlocker.client.net.NetworkException;
 import me.camerongray.teamlocker.client.net.ServerProvidedException;
+import me.camerongray.teamlocker.client.protobufs.Objects;
 import org.abstractj.kalium.keys.KeyPair;
 
 import java.io.IOException;
@@ -23,6 +24,20 @@ public class Account {
         this.comments = comments;
     }
 
+    private Objects.Account toProtobuf() {
+        Objects.AccountMetadata.Builder accountMetadata = Objects.AccountMetadata.newBuilder();
+        accountMetadata.setName(name);
+        accountMetadata.setUsername(username);
+        accountMetadata.setComments(comments);
+
+        Objects.Account.Builder protobuf = Objects.Account.newBuilder();
+        protobuf.setId(id);
+        protobuf.setPassword(password);
+        protobuf.setMetadata(accountMetadata.build());
+
+        return protobuf.build();
+    }
+
     public Account addToServer() throws ServerProvidedException, NetworkException, IOException {
         // TODO: Fetch all users who should have access to this account
         // TODO: Encrypt account for each of these users
@@ -34,11 +49,11 @@ public class Account {
             System.out.println(user.getFullName());
         }
 
-//        KeyPair keypair = CryptoHelpers.generateKeyPair();
-//        byte[] encrypted = CryptoHelpers.encryptWithPublicKey("Foobar".getBytes(),
-//                keypair.getPublicKey().toBytes());
-//        System.out.println(new String(CryptoHelpers.decryptWithKeypair(encrypted, keypair.getPublicKey().toBytes(),
-//                keypair.getPrivateKey().toBytes())));
+        KeyPair keypair = CryptoHelpers.generateKeyPair();
+        byte[] encrypted = CryptoHelpers.encryptWithPublicKey("Foobar".getBytes(),
+                keypair.getPublicKey().toBytes());
+        System.out.println(new String(CryptoHelpers.decryptWithKeypair(encrypted, keypair.getPublicKey().toBytes(),
+                keypair.getPrivateKey().toBytes())));
 
         return null;
     }
